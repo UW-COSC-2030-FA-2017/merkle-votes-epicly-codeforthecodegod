@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "time.h"
 using namespace std;
 
 class bTREE
@@ -17,6 +18,7 @@ private:
     //some data structure to hold your treeNodes together ...
     //DATASTUCTURE treeNodes tree;
     //any helper private variables you need
+    treeNode * tree_
     
 public:
     bTREE();
@@ -30,6 +32,8 @@ public:
     bool find(string);
     
     string locate(string);
+
+    int size( const treeNode * subtree);
     
     
     friend bool operator==(const bTREE& lhs, const bTREE& rhs);
