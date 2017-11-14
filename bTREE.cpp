@@ -18,9 +18,13 @@ int bTREE::dataInserted()
 
 }
 
-int bTREE::numberOfNodes()
+int bTREE::numberOfNodes(const treeNode * subtree)
 {
-	return tree_.size();
+	if(subtree == NULL){
+		return 0;
+	} else {
+		return 1 + numberOfNodes(subtree->left_) + numberOfNodes(subtree->right_);
+	}
 }
 
 // int bTREE::size( const treeNode * subtree){
@@ -31,59 +35,73 @@ int bTREE::numberOfNodes()
 // 	return 1 + size(subtree->left_) + size(subtree->right_);
 // }
 
-int bTREE::insert(string data, int time)
+int bTREE::insert(treeNode * subtree, string data, int time)
 {
     /* If the tree is empty, return a new node */
-    if (tree_ == NULL) 
+    if (subtree == NULL) 
     	{
-    		tree_.time = time;
-    		tree_.data = data;
+    		subtree->time = time;
+    		subtree->data = data;
     		
     	}
     /* Otherwise, recur down the tree */
-    if (data < tree_->data)
-       { tree_->left_  = insert(tree_->left_, data);}
-    else if (tree_ > tree_->data)
-       { tree_->right_ = insert(tree_->right_, data);}   
+    if (data < subtree->data){
+       return insert(subtree->left_, data, time);
+    }
+    else if (data > subtree->data){ 
+    	return insert(subtree->right_, data, time);
+    }   
 
- 	return tree_->time;
+ 	return subtree->time;
 }
 
-int bTREE::find(string key)
+int bTREE::find(const treeNode * subtree, string key)
 {
-	if (tree_ == NULL || tree_->data == key){
-		return tree_->time;
+	if (subtree == NULL || subtree->data == key){
+		return subtree->time;
 	}
 
-	if (tree_->data < key){
-		return find(tree_->right_, key);
+	if (subtree->data < key){
+		return find(subtree->right_, key);
 	}
 
-	return find(tree_->left_, key);
+	return find(subtree->left_, key);
 }
 
-string bTREE::locate(string key)
+string bTREE::locate(const treeNode * subtree, string key)
 {
-	if (tree_ == NULL || tree_->data == key){
-		return tree_->data;
+	if (subtree== NULL || subtree->data == key){
+		return subtree->data;
 	}
 
-	if (tree_->data < key){
-		return find(tree_->right_, key);
+	if (subtree->data < key){
+		return locate(subtree->right_, key);
 	}
 
-	return find(tree_->left_, key);
+	return locate(subtree->left_, key);
 }
 
-friend bool bTREE::operator ==(const bTREE& lhs, const bTREE& rhs)
+void 
+   bTREE:: destroy( treeNode * & subtree )
 {
-	if(lhs->data == rhs->data && lhs->time == rhs->time){
+   if( subtree != NULL )
+   {
+      destroy( subtree->left_ );
+      destroy( subtree->right_ );
+      delete subtree;
+      subtree = NULL;
+   }
+}
+
+bool bTREE::operator==(const bTREE& lhs, const bTREE& rhs)
+{
+	if(lhs.data == rhs.data && lhs.time == rhs.time){
 		return 1;
 	}
 	return 0;
 }
 
-friend bool bTREE::operator !=(const bTREE& lhs, const bTREE& rhs)
+bool bTREE::operator !=(const bTREE& lhs, const bTREE& rhs)
 {
 	if(lhs->data == rhs->data || lhs->time == rhs->time){
 		return 1;
@@ -91,7 +109,7 @@ friend bool bTREE::operator !=(const bTREE& lhs, const bTREE& rhs)
 	return 0;
 }
 
-friend std::ostream& bTREE::operator <<(std::ostream& out, const bTREE& p)
+std::ostream& bTREE::operator <<(std::ostream& out, const bTREE& p)
 {
 	std::cout << "Timestamp: " << p->time << " Data: " << p->data;
 }

@@ -18,22 +18,22 @@ private:
     //some data structure to hold your treeNodes together ...
     //DATASTUCTURE treeNodes tree;
     //any helper private variables you need
-    treeNode * tree_
+    treeNode * tree_;
     
 public:
     bTREE();
     ~bTREE();
     
     int dataInserted();
-    int numberOfNodes();
+    int numberOfNodes(const treeNode * subtree);
     
-    bool insert(string, int);
+    int insert(treeNode * subtree, string data, int time);
     
-    bool find(string);
+    int find(const treeNode * subtree, string key);
     
-    string locate(string);
+    string locate(const treeNode * subtree, string);
 
-    int size( const treeNode * subtree);
+    void destroy(treeNode * & subtree);
     
     
     friend bool operator==(const bTREE& lhs, const bTREE& rhs);
