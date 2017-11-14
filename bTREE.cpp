@@ -23,7 +23,17 @@ int bTREE::numberOfNodes()
 	if(tree_ == NULL){
 		return 0;
 	}
-	return 1 + 
+
+
+	return 1 + size(tree_->left_) + size(tree_->right_);
+}
+
+int bTREE::size( const treeNode * subtree){
+	if(subtree == NULL){
+		return 0;
+	}
+
+	return 1 + size(subtree->left_) + size(subtree->right_);
 }
 
 int bTREE::insert(string data, int time)
