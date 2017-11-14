@@ -44,7 +44,7 @@ int bTREE::find(string)
 {
 }
 
-string bTREE::locate()
+string bTREE::locate(string)
 {
 }
 
