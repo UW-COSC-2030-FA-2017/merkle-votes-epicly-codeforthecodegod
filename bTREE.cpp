@@ -33,22 +33,20 @@ int bTREE::numberOfNodes()
 
 int bTREE::insert(string data, int time)
 {
-	treeNode N = new treeNode;
     /* If the tree is empty, return a new node */
-    if (N == NULL) 
+    if (tree_ == NULL) 
     	{
-    		N.time = time;
-    		N.data = data;
-    		return N;
+    		tree_.time = time;
+    		tree_.data = data;
+    		
     	}
     /* Otherwise, recur down the tree */
-    if (data < N->data)
-       { N->left_  = insert(N->left_, data);}
-    else if (N > N->data)
-       { N->right_ = insert(N->right_, data);}   
- 
-    /* return the (unchanged) node pointer */
-    return N;
+    if (data < tree_->data)
+       { tree_->left_  = insert(tree_->left_, data);}
+    else if (tree_ > tree_->data)
+       { tree_->right_ = insert(tree_->right_, data);}   
+
+ 	return tree_->time;
 }
 
 int bTREE::find(string key)
