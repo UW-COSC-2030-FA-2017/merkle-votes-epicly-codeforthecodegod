@@ -4,9 +4,12 @@ using namespace std;
 
 class bTREE
 {
+
     struct treeNode{
         string data;
         int time;
+        treeNode * left_;
+        treeNode * right_;
     };
     
 private:
@@ -26,6 +29,8 @@ public:
     bool find(string);
     
     string locate(string);
+
+    bool isLeaf(treeNode bruh);
     
     
     friend bool operator==(const bTREE& lhs, const bTREE& rhs);
