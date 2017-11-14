@@ -3,19 +3,27 @@
 
 //look at descriptions in pMT.h for guidance on what you might need for these function to actually do
 bTREE::bTREE()
+	: tree_( NULL )
 {
+
 }
 
-bTREE::~bTREE()
+bTREE::~bTREE() 
 {
+	destroy( tree_ );
 }
 
 int bTREE::dataInserted()
 {
+
 }
 
 int bTREE::numberOfNodes()
 {
+	if(tree_ == NULL){
+		return 0;
+	}
+	return 1 + 
 }
 
 int bTREE::insert(string data, int time)

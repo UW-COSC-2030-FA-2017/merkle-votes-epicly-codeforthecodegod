@@ -10,6 +10,7 @@ class bTREE
         int time;
         treeNode * left_;
         treeNode * right_;
+        bool isLeaf();
     };
     
 private:
@@ -29,8 +30,6 @@ public:
     bool find(string);
     
     string locate(string);
-
-    bool isLeaf(treeNode bruh);
     
     
     friend bool operator==(const bTREE& lhs, const bTREE& rhs);
