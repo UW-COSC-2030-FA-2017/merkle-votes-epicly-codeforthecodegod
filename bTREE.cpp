@@ -15,7 +15,7 @@ bTREE::~bTREE()
 
 int bTREE::dataInserted()
 {
-
+	return 1;
 }
 
 int bTREE::numberOfNodes(const treeNode * subtree)
@@ -93,23 +93,23 @@ void
    }
 }
 
-bool bTREE::operator==(const bTREE& lhs, const bTREE& rhs)
+bool operator==(const bTREE& lhs, const bTREE& rhs)
 {
-	if(lhs.data == rhs.data && lhs.time == rhs.time){
+	if(lhs.tree_->data == rhs.tree_->data && lhs.tree_->time == rhs.tree_->time){
 		return 1;
 	}
 	return 0;
 }
 
-bool bTREE::operator !=(const bTREE& lhs, const bTREE& rhs)
+bool operator !=(const bTREE& lhs, const bTREE& rhs)
 {
-	if(lhs->data == rhs->data || lhs->time == rhs->time){
+	if(lhs.tree_->data == rhs.tree_->data || lhs.tree_->time == rhs.tree_->time){
 		return 1;
 	}
 	return 0;
 }
 
-std::ostream& bTREE::operator <<(std::ostream& out, const bTREE& p)
+std::ostream& operator <<(std::ostream& out, const bTREE& p)
 {
-	std::cout << "Timestamp: " << p->time << " Data: " << p->data;
+	return std::cout << "Timestamp: " << p.tree_->time << " Data: " << p.tree_->data;
 }
