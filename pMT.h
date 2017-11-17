@@ -32,5 +32,11 @@ public:
     friend pMT operator^(const pMT& lhs, const pMT& rhs);
     friend std::ostream& operator<<(std::ostream& out, const pMT& p);
     
+
+    static void displayRight( std::ostream & outfile, 
+      BinaryNode * subtree, std::string prefix );
+
+    static void displayLeft( std::ostream & outfile, 
+      BinaryNode * subtree, std::string prefix );
 };
 

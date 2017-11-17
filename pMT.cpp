@@ -6,6 +6,8 @@ pMT::pMT(int hashSelect)
  * @return 
  */
 {
+	nTree_ = new bTREE;
+	int time = time(0);
 }
 
 pMT::~pMT()
@@ -23,8 +25,22 @@ int pMT::insert(string vote, int time)
  * @param time - an int representing the time 
  * @return the number of operations needed to do the insert, -1 if out of memory
  */
-
 {
+	time = time(0);
+	int operations = 0;
+	if(hashSelect == 1)
+	{
+		insert(hash_1(vote),time);
+	}
+	else if (hashSelect == 2)
+	{
+		insert(hash_2(vote),time);
+	}
+	else if(hashSelect == 3)
+	{
+		insert(hash_3(vote),time);
+	}
+	return operations;
 }
 
 int pMT::find(string vote, int time, int hashSelect)
@@ -36,6 +52,16 @@ int pMT::find(string vote, int time, int hashSelect)
  * @return 0 if not found, else number of opperations required to find the matching vote
  */
 {
+	int operations = 0;
+	if(nTree.findHash(vote) = 1 && nTree.findHash(time) = 1 && nTree.findHash(hash) = 1)
+	{
+		operations = 1;
+		return operations;
+	}
+	else 
+	{
+		return operations;
+	}
     
 }
 
@@ -46,6 +72,18 @@ int pMT::findHash(string mhash)
  * @return 0 if not found, else number of opperations required to find the matching hash
  */
 {
+	int operations = 0;
+	if(nTree_ != null)
+	{
+		nTree_.locate(mhash);
+		operations = 1;
+		return operations;
+	}
+	else
+	{
+		return operations;
+	}
+
 }
 
 
@@ -56,6 +94,18 @@ string pMT::locateData(string vote)
  * @return sequence of L's and R's comprising the movement to the leaf node; else return a dot '.'
  */
 {
+	int operations = 0;
+	if(nTree_ != null)
+	{
+		nTree_.Tree_->left_.locate(vote);
+		nTree_.Tree_->right_.locate(vote);
+		operations = 2;
+		return operations;
+	}
+	else
+	{
+		return operations;
+	}
 }
 
 string pMT::locateHash(string mhash)
@@ -65,35 +115,82 @@ string pMT::locateHash(string mhash)
  * @return sequence of L's and R's comprising the movement to the hash node, ; else return a dot '.'
  */
 {
+		int operations = 0;
+	if(nTree_ != null)
+	{
+		nTree_.Tree_->left_.locate(mhash);
+		nTree_.Tree_->right_.locate(mhash);
+		operations = 2;
+		return operations;
+	}
+	else
+	{
+		return operations;
+	}
 }
 
 
 
-string pMT::hash_1(string key)
+string pMT::hash_1(string key) //RSHash lab 9
 /**
  * @brief A function that takes in a key and returns a hash of that key using some custom function
  * @param key, a string
  * @return a hash of the key
  */
 {
+   unsigned int b    = 378551;
+   unsigned int a    = 63689;
+   unsigned int hash = 0;
+
+   for(std::size_t i = 0; i < key.length(); i++)
+   {
+      hash = hash * a + key[i];
+      a    = a * b;
+   }
+
+   return to_string(hash);
 }
 
-string pMT::hash_2(string key)
+string pMT::hash_2(string key)//JSHash lab9
 /**
  * @brief A function that takes in a key and returns a hash of that key using some custom function
  * @param key, a string
  * @return a hash of the key
  */
 {
+   unsigned int hash = 1315423911;
+
+   for(std::size_t i = 0; i < key.length(); i++)
+   {
+      hash ^= ((hash << 5) + key[i] + (hash >> 2));
+   }
+
+   return to_string(hash);
 }
 
-string pMT::hash_3(string key)
+string pMT::hash_3(string key)//PJWHash lab9
 /**
  * @brief A function that takes in a key and returns a hash of that key using some custom function
  * @param key, a string
  * @return a hash of the key
  */
 {
+	unsigned int BitsInUnsignedInt = (unsigned int)(sizeof(unsigned int) * 8);
+   unsigned int ThreeQuarters     = (unsigned int)((BitsInUnsignedInt  * 3) / 4);
+   unsigned int OneEighth         = (unsigned int)(BitsInUnsignedInt / 8);
+   unsigned int HighBits          = (unsigned int)(0xFFFFFFFF) << (BitsInUnsignedInt - OneEighth);
+   unsigned int hash              = 0;
+   unsigned int test              = 0;
+
+   for(std::size_t i = 0; i < key.length(); i++)
+   {
+      hash = (hash << OneEighth) + key[i];
+
+      if((test = hash & HighBits)  != 0)
+      {
+         hash = (( hash ^ (test >> ThreeQuarters)) & (~HighBits));
+      }
+   }
 }
 
 friend bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
@@ -104,6 +201,10 @@ friend bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
  * @return true if equal, false otherwise
  */
 {
+	if(lhs.tree_->data == rhs.tree_->data && lhs.tree_->time == rhs.tree_->time){
+		return true;
+	}
+	return false;
 }
 
 friend bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
@@ -114,7 +215,10 @@ friend bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
  * @return true if not equal, false otherwise
  */
 {
-    
+  if(lhs.tree_->data != rhs.tree_->data && lhs.tree_->time != rhs.tree_->time){
+		return true;
+	}
+	return false;  
 }
 
 friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
@@ -125,7 +229,10 @@ friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
  * @return true if not equal, false otherwise
  */
 {
-    
+    if(lhs.tree_->data ^= rhs.tree_->data && lhs.tree_->time ^= rhs.tree_->time){
+		return true;
+	}
+	return false;
 }
 
 
@@ -137,6 +244,18 @@ friend std::ostream& pMT::operator <<(std::ostream& out, const pMT& p)
  * @return a tree to the screen
  */
 {
+
+std::string prefix;
+   if( tree_ == NULL )
+   {
+      out << "-" << std::endl;
+   }
+   else
+   {
+      displayLeft( out, tree_->left_, "    " );
+      outfile << "---" << tree_->entry_ << std::endl;
+      displayRight( out, tree_->right_, "    " );
+   }
 }
 
 
@@ -148,4 +267,48 @@ friend pMT pMT::operator ^(const pMT& lhs, const pMT& rhs)
  * @return a tree comprised of the right hand side tree nodes that are different from the left
  */
 {
+ 	bTREE diftree = new bTREE;
+ 	for(int i = 0; i < lhs.length; i++)
+ 	{
+ 		for(int j = 0; j < rhs.length;j++)
+ 		{
+	 		if (lhs.i != rhs.j)
+	 		{
+	 			diftree.insert(rhs.j);
+	 		}
+	 	}
+ 	}
+}
+
+
+void 
+   pMT:: displayLeft( std::ostream & outfile, 
+   BinaryNode * subtree, std::string prefix )
+{
+   if( subtree == NULL )
+   {
+      outfile << prefix + "/" << std::endl;
+   }
+   else
+   {
+      displayLeft( outfile, subtree->left_, prefix + "     " );
+      outfile << prefix + "/---" << subtree->entry_ << std::endl;
+      displayRight( outfile, subtree->right_, prefix + "|    " );
+   }
+}
+
+void 
+   pMT:: displayRight( std::ostream & outfile, 
+   BinaryNode * subtree, std::string prefix )
+{
+   if( subtree == NULL )
+   {
+      outfile << prefix + "\\" << std::endl;
+   }
+   else
+   {
+      displayLeft( outfile, subtree->left_, prefix + "|    " );
+      outfile << prefix + "\\---" << subtree->entry_ << std::endl;
+      displayRight( outfile, subtree->right_, prefix + "     " );
+   }
 }
