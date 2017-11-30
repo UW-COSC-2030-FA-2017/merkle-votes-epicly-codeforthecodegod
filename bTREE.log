@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  13 NOV 2017 21:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  29 NOV 2017 19:54
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -314,8 +314,16 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no d in font nullfont!
 Missing character: There is no ( in font nullfont!
 Missing character: There is no ) in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 16--18
+Overfull \hbox (20.0pt too wide) in paragraph at lines 16--20
 []
  []
 
@@ -327,7 +335,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.21 i
-      nt bTREE::numberOfNodes()
+      nt bTREE::numberOfNodes(const
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -355,21 +363,91 @@ Missing character: There is no d in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no ( in font nullfont!
-Missing character: There is no ) in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no f in font nullfont!
 Missing character: There is no ( in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no U in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no + in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no O in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no t in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.23 	if(tree_
-               == NULL){
+l.26 		return 1 + numberOfNodes(subtree->left_
+                                              ) + numberOfNodes(subtree->rig...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.27 	}
+       
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
 ! Extra }, or forgotten $.
 l.28 }
@@ -394,13 +472,19 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 21--29
  []
 
 
-Overfull \hbox (17.19443pt too wide) in paragraph at lines 21--29
-[] \OT1/cmr/m/n/10 =
+Overfull \hbox (11.40282pt too wide) in paragraph at lines 21--29
+[] \OT1/cmr/m/n/10 +
  []
 
 
-Overfull \hbox (118.64754pt too wide) in paragraph at lines 21--29
-\OML/cmm/m/it/10 NULL\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 else[]$ 
+Overfull \hbox (131.28195pt too wide) in paragraph at lines 21--29
+\OML/cmm/m/it/10 numberOfNodes\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 subtree\OMS/cms
+y/m/n/10 ^^@ \OML/cmm/m/it/10 >
+ []
+
+
+Overfull \hbox (29.13846pt too wide) in paragraph at lines 21--29
+\OML/cmm/m/it/10 right[]\OT1/cmr/m/n/10 ;$ 
  []
 
 
@@ -584,7 +668,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.38 i
-      nt bTREE::insert(string data, int time)
+      nt bTREE::insert(treeNode * subtree, string data, int time)
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -605,6 +689,23 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no ( in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no , in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
@@ -662,50 +763,61 @@ Missing character: There is no / in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no f in font nullfont!
 Missing character: There is no ( in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no e in font nullfont!
-! Missing $ inserted.
-<inserted text> 
-                $
-l.41     if (tree_
-                   == NULL)
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.45 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.45 
-     
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
+Missing character: There is no = in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no U in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no ; in font nullfont!
 
 Overfull \hbox (20.0pt too wide) in paragraph at lines 38--45
 []
- []
-
-
-Overfull \hbox (17.19443pt too wide) in paragraph at lines 38--45
-[] \OT1/cmr/m/n/10 =
- []
-
-
-Overfull \hbox (189.36852pt too wide) in paragraph at lines 38--45
-\OML/cmm/m/it/10 NULL\OT1/cmr/m/n/10 )[]$ 
  []
 
 
@@ -758,44 +870,89 @@ Missing character: There is no a in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no < in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no t in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.48     if (data < tree_
-                         ->data)
+l.49        return insert(subtree->left_
+                                        , data, time);
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.50     }
+          
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.52 
+l.54 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 47--52
+Overfull \hbox (20.0pt too wide) in paragraph at lines 47--54
 []
  []
 
 
-Overfull \hbox (17.30553pt too wide) in paragraph at lines 47--52
-[] \OML/cmm/m/it/10 >
+Overfull \hbox (115.96329pt too wide) in paragraph at lines 47--54
+[]\OML/cmm/m/it/10 data; time\OT1/cmr/m/n/10 ); \OML/cmm/m/it/10 elseif\OT1/cmr
+/m/n/10 (\OML/cmm/m/it/10 data >
  []
 
 
-Overfull \hbox (290.32703pt too wide) in paragraph at lines 47--52
-\OML/cmm/m/it/10 data\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 elseif\OT1/cmr/m/n/10 
-(\OML/cmm/m/it/10 tree[]tree[] >
+Overfull \hbox (50.75006pt too wide) in paragraph at lines 47--54
+\OML/cmm/m/it/10 subtree\OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 >
  []
 
 
-Overfull \hbox (210.98946pt too wide) in paragraph at lines 47--52
+Overfull \hbox (214.06026pt too wide) in paragraph at lines 47--54
 \OML/cmm/m/it/10 data\OT1/cmr/m/n/10 )[]$ 
  []
 
@@ -806,8 +963,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.53  	r
-        eturn tree_->time;
+l.55  	r
+        eturn subtree->time;
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -817,48 +974,23 @@ Missing character: There is no t in font nullfont!
 Missing character: There is no u in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no e in font nullfont!
-! Missing $ inserted.
-<inserted text> 
-                $
-l.53  	return tree_
-                   ->time;
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no ; in font nullfont!
 
-! Extra }, or forgotten $.
-l.54 }
-      
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.55 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (20.0pt too wide) in paragraph at lines 53--55
+Overfull \hbox (20.0pt too wide) in paragraph at lines 55--57
 []
- []
-
-
-Overfull \hbox (17.30553pt too wide) in paragraph at lines 53--55
-[] \OML/cmm/m/it/10 >
- []
-
-
-Overfull \hbox (23.27043pt too wide) in paragraph at lines 53--55
-\OML/cmm/m/it/10 time\OT1/cmr/m/n/10 ;$ 
  []
 
 
@@ -868,8 +1000,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.56 i
-      nt bTREE::find(string key)
+l.58 i
+      nt bTREE::find(const treeNode * subtree, string key)
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -888,6 +1020,28 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no d in font nullfont!
 Missing character: There is no ( in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no , in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
@@ -901,49 +1055,63 @@ Missing character: There is no ) in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no f in font nullfont!
 Missing character: There is no ( in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no e in font nullfont!
-! Missing $ inserted.
-<inserted text> 
-                $
-l.58 	if (tree_
-                == NULL || tree_->data == key){
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+Missing character: There is no = in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no U in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no | in font nullfont!
+Missing character: There is no | in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no ; in font nullfont!
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.61 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (20.0pt too wide) in paragraph at lines 56--61
+Overfull \hbox (20.0pt too wide) in paragraph at lines 58--63
 []
- []
-
-
-Overfull \hbox (17.19443pt too wide) in paragraph at lines 56--61
-[] \OT1/cmr/m/n/10 =
- []
-
-
-Overfull \hbox (71.22826pt too wide) in paragraph at lines 56--61
-\OML/cmm/m/it/10 NULL\OMS/cmsy/m/n/10 jj\OML/cmm/m/it/10 tree[] >
- []
-
-
-Overfull \hbox (37.72107pt too wide) in paragraph at lines 56--61
-\OML/cmm/m/it/10 data \OT1/cmr/m/n/10 ==
- []
-
-
-Overfull \hbox (109.96733pt too wide) in paragraph at lines 56--61
-\OML/cmm/m/it/10 key\OT1/cmr/m/n/10 )[]$ 
  []
 
 
@@ -953,52 +1121,90 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.62 	i
-       f (tree_->data < key){
+l.64 	i
+       f (subtree->data < key){
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 Missing character: There is no i in font nullfont!
 Missing character: There is no f in font nullfont!
 Missing character: There is no ( in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no < in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no t in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.62 	if (tree_
-               ->data < key){
+l.65 		return find(subtree->right_
+                                  , key);
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.66 	}
+       
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.65 
+l.67 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 62--65
+Overfull \hbox (20.0pt too wide) in paragraph at lines 64--67
 []
  []
 
 
-Overfull \hbox (17.30553pt too wide) in paragraph at lines 62--65
-[] \OML/cmm/m/it/10 >
- []
-
-
-Overfull \hbox (29.94327pt too wide) in paragraph at lines 62--65
-\OML/cmm/m/it/10 data <
- []
-
-
-Overfull \hbox (158.92645pt too wide) in paragraph at lines 62--65
-\OML/cmm/m/it/10 key\OT1/cmr/m/n/10 )[]$ 
+Overfull \hbox (24.9804pt too wide) in paragraph at lines 64--67
+[]\OML/cmm/m/it/10 key\OT1/cmr/m/n/10 );$ 
  []
 
 
@@ -1008,8 +1214,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.66 	r
-       eturn find(tree_->left_, key);
+l.68 	r
+       eturn find(subtree->left_, key);
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -1024,20 +1230,29 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no d in font nullfont!
 Missing character: There is no ( in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no t in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.66 	return find(tree_
-                       ->left_, key);
+l.68 	return find(subtree->left_
+                                , key);
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Extra }, or forgotten $.
-l.67 }
+l.69 }
       
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1048,24 +1263,19 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.68 
+l.70 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 66--68
+Overfull \hbox (20.0pt too wide) in paragraph at lines 68--70
 []
  []
 
 
-Overfull \hbox (17.30553pt too wide) in paragraph at lines 66--68
-[] \OML/cmm/m/it/10 >
- []
-
-
-Overfull \hbox (42.4006pt too wide) in paragraph at lines 66--68
-\OML/cmm/m/it/10 left[]key\OT1/cmr/m/n/10 );$ 
+Overfull \hbox (24.9804pt too wide) in paragraph at lines 68--70
+[]\OML/cmm/m/it/10 key\OT1/cmr/m/n/10 );$ 
  []
 
 
@@ -1075,8 +1285,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.69 s
-      tring bTREE::locate(string key)
+l.71 s
+      tring bTREE::locate(const treeNode * subtree, string key)
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -1100,6 +1310,28 @@ Missing character: There is no a in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no ( in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no , in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
@@ -1113,49 +1345,63 @@ Missing character: There is no ) in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no f in font nullfont!
 Missing character: There is no ( in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no e in font nullfont!
-! Missing $ inserted.
-<inserted text> 
-                $
-l.71 	if (tree_
-                == NULL || tree_->data == key){
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+Missing character: There is no = in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no U in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no | in font nullfont!
+Missing character: There is no | in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no ; in font nullfont!
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.74 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (20.0pt too wide) in paragraph at lines 69--74
+Overfull \hbox (20.0pt too wide) in paragraph at lines 71--76
 []
- []
-
-
-Overfull \hbox (17.19443pt too wide) in paragraph at lines 69--74
-[] \OT1/cmr/m/n/10 =
- []
-
-
-Overfull \hbox (71.22826pt too wide) in paragraph at lines 69--74
-\OML/cmm/m/it/10 NULL\OMS/cmsy/m/n/10 jj\OML/cmm/m/it/10 tree[] >
- []
-
-
-Overfull \hbox (37.72107pt too wide) in paragraph at lines 69--74
-\OML/cmm/m/it/10 data \OT1/cmr/m/n/10 ==
- []
-
-
-Overfull \hbox (108.86244pt too wide) in paragraph at lines 69--74
-\OML/cmm/m/it/10 key\OT1/cmr/m/n/10 )[]$ 
  []
 
 
@@ -1165,52 +1411,92 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.75 	i
-       f (tree_->data < key){
+l.77 	i
+       f (subtree->data < key){
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 Missing character: There is no i in font nullfont!
 Missing character: There is no f in font nullfont!
 Missing character: There is no ( in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no < in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no t in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.75 	if (tree_
-               ->data < key){
+l.78 		return locate(subtree->right_
+                                    , key);
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.79 	}
+       
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.78 
+l.80 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 75--78
+Overfull \hbox (20.0pt too wide) in paragraph at lines 77--80
 []
  []
 
 
-Overfull \hbox (17.30553pt too wide) in paragraph at lines 75--78
-[] \OML/cmm/m/it/10 >
- []
-
-
-Overfull \hbox (29.94327pt too wide) in paragraph at lines 75--78
-\OML/cmm/m/it/10 data <
- []
-
-
-Overfull \hbox (158.92645pt too wide) in paragraph at lines 75--78
-\OML/cmm/m/it/10 key\OT1/cmr/m/n/10 )[]$ 
+Overfull \hbox (24.9804pt too wide) in paragraph at lines 77--80
+[]\OML/cmm/m/it/10 key\OT1/cmr/m/n/10 );$ 
  []
 
 
@@ -1220,8 +1506,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.79 	r
-       eturn find(tree_->left_, key);
+l.81 	r
+       eturn locate(subtree->left_, key);
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -1231,25 +1517,36 @@ Missing character: There is no t in font nullfont!
 Missing character: There is no u in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no f in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no d in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
 Missing character: There is no ( in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no > in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no t in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.79 	return find(tree_
-                       ->left_, key);
+l.81 	return locate(subtree->left_
+                                  , key);
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Extra }, or forgotten $.
-l.80 }
+l.82 }
       
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1260,24 +1557,19 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.81 
+l.83 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 79--81
+Overfull \hbox (20.0pt too wide) in paragraph at lines 81--83
 []
  []
 
 
-Overfull \hbox (17.30553pt too wide) in paragraph at lines 79--81
-[] \OML/cmm/m/it/10 >
- []
-
-
-Overfull \hbox (42.4006pt too wide) in paragraph at lines 79--81
-\OML/cmm/m/it/10 left[]key\OT1/cmr/m/n/10 );$ 
+Overfull \hbox (24.9804pt too wide) in paragraph at lines 81--83
+[]\OML/cmm/m/it/10 key\OT1/cmr/m/n/10 );$ 
  []
 
 
@@ -1287,7 +1579,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.82 v
+l.84 v
       oid
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1296,16 +1588,11 @@ Missing character: There is no v in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no d in font nullfont!
-Missing character: There is no B in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no y in font nullfont!
+Missing character: There is no b in font nullfont!
 Missing character: There is no T in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no e in font nullfont!
+Missing character: There is no R in font nullfont!
+Missing character: There is no E in font nullfont!
+Missing character: There is no E in font nullfont!
 Missing character: There is no : in font nullfont!
 Missing character: There is no : in font nullfont!
 Missing character: There is no d in font nullfont!
@@ -1326,8 +1613,8 @@ Missing character: There is no d in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no * in font nullfont!
 ! Misplaced alignment tab character &.
-l.83    BinaryTree:: destroy( treeNode * &
-                                           subtree )
+l.85    bTREE:: destroy( treeNode * &
+                                      subtree )
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1384,13 +1671,13 @@ Missing character: There is no t in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.87       destroy( subtree->left_
+l.89       destroy( subtree->left_
                                    );
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Extra }, or forgotten $.
-l.91    }
+l.93    }
          
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1399,7 +1686,7 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 ! Extra }, or forgotten $.
-l.92 }
+l.94 }
       
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1410,30 +1697,30 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.93 
+l.95 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 82--93
+Overfull \hbox (20.0pt too wide) in paragraph at lines 84--95
 []
  []
 
 
-Overfull \hbox (95.76633pt too wide) in paragraph at lines 82--93
+Overfull \hbox (95.76633pt too wide) in paragraph at lines 84--95
 []\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 destroy\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s
 ubtree\OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 >
  []
 
 
-Overfull \hbox (136.60385pt too wide) in paragraph at lines 82--93
+Overfull \hbox (136.60385pt too wide) in paragraph at lines 84--95
 \OML/cmm/m/it/10 right[]\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 deletesubtree\OT1/cm
 r/m/n/10 ; \OML/cmm/m/it/10 subtree \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (33.43193pt too wide) in paragraph at lines 82--93
+Overfull \hbox (33.43193pt too wide) in paragraph at lines 84--95
 \OML/cmm/m/it/10 NULL\OT1/cmr/m/n/10 ;$ 
  []
 
@@ -1444,28 +1731,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.94 f
-      riend bool bTREE::operator ==(const bTREE& lhs, const bTREE& rhs)
+l.96 b
+      ool operator==(const bTREE& lhs, const bTREE& rhs)
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-Missing character: There is no f in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no d in font nullfont!
 Missing character: There is no b in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no l in font nullfont!
-Missing character: There is no b in font nullfont!
-Missing character: There is no T in font nullfont!
-Missing character: There is no R in font nullfont!
-Missing character: There is no E in font nullfont!
-Missing character: There is no E in font nullfont!
-Missing character: There is no : in font nullfont!
-Missing character: There is no : in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no e in font nullfont!
@@ -1488,8 +1762,8 @@ Missing character: There is no R in font nullfont!
 Missing character: There is no E in font nullfont!
 Missing character: There is no E in font nullfont!
 ! Misplaced alignment tab character &.
-l.94 friend bool bTREE::operator ==(const bTREE&
-                                                 lhs, const bTREE& rhs)
+l.96 bool operator==(const bTREE&
+                                  lhs, const bTREE& rhs)
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1512,7 +1786,7 @@ Missing character: There is no R in font nullfont!
 Missing character: There is no E in font nullfont!
 Missing character: There is no E in font nullfont!
 ! Misplaced alignment tab character &.
-l.94 ...operator ==(const bTREE& lhs, const bTREE&
+l.96 ... operator==(const bTREE& lhs, const bTREE&
                                                    rhs)
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1531,26 +1805,22 @@ Missing character: There is no ( in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no h in font nullfont!
 Missing character: There is no s in font nullfont!
-Missing character: There is no - in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no a in font nullfont!
+Missing character: There is no . in font nullfont!
 Missing character: There is no t in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no = in font nullfont!
 Missing character: There is no r in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no - in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no a in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.98 	if(lhs.tree_
+                  ->data == rhs.tree_->data && lhs.tree_->time == rhs.tree_-...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
 ! Misplaced alignment tab character &.
-l.96 	if(lhs->data == rhs->data &
-                                 & lhs->time == rhs->time){
+l.98 	if(lhs.tree_->data == rhs.tree_->data &
+                                             & lhs.tree_->time == rhs.tree_-...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1559,8 +1829,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.96 	if(lhs->data == rhs->data &&
-                                   lhs->time == rhs->time){
+l.98 	if(lhs.tree_->data == rhs.tree_->data &&
+                                               lhs.tree_->time == rhs.tree_-...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1568,46 +1838,62 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-Missing character: There is no l in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no - in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no - in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no ) in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no ; in font nullfont!
+! Extra }, or forgotten $.
+l.102 }
+       
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 94--101
+! Missing $ inserted.
+<inserted text> 
+                $
+l.103 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 96--103
 []
+ []
+
+
+Overfull \hbox (17.30553pt too wide) in paragraph at lines 96--103
+[] \OML/cmm/m/it/10 >
+ []
+
+
+Overfull \hbox (37.72107pt too wide) in paragraph at lines 96--103
+\OML/cmm/m/it/10 data \OT1/cmr/m/n/10 ==
+ []
+
+
+Overfull \hbox (53.03477pt too wide) in paragraph at lines 96--103
+\OML/cmm/m/it/10 rhs:tree[] >
+ []
+
+
+Overfull \hbox (70.81374pt too wide) in paragraph at lines 96--103
+\OML/cmm/m/it/10 datalhs:tree[] >
+ []
+
+
+Overfull \hbox (38.82596pt too wide) in paragraph at lines 96--103
+\OML/cmm/m/it/10 time \OT1/cmr/m/n/10 ==
+ []
+
+
+Overfull \hbox (53.03477pt too wide) in paragraph at lines 96--103
+\OML/cmm/m/it/10 rhs:tree[] >
+ []
+
+
+Overfull \hbox (99.08324pt too wide) in paragraph at lines 96--103
+\OML/cmm/m/it/10 time\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 return\OT1/cmr/m/n/10 
+0;$ 
  []
 
 
@@ -1617,28 +1903,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.102 f
-       riend bool bTREE::operator !=(const bTREE& lhs, const bTREE& rhs)
+l.104 b
+       ool operator !=(const bTREE& lhs, const bTREE& rhs)
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-Missing character: There is no f in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no d in font nullfont!
 Missing character: There is no b in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no l in font nullfont!
-Missing character: There is no b in font nullfont!
-Missing character: There is no T in font nullfont!
-Missing character: There is no R in font nullfont!
-Missing character: There is no E in font nullfont!
-Missing character: There is no E in font nullfont!
-Missing character: There is no : in font nullfont!
-Missing character: There is no : in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no e in font nullfont!
@@ -1661,8 +1934,8 @@ Missing character: There is no R in font nullfont!
 Missing character: There is no E in font nullfont!
 Missing character: There is no E in font nullfont!
 ! Misplaced alignment tab character &.
-l.102 friend bool bTREE::operator !=(const bTREE&
-                                                  lhs, const bTREE& rhs)
+l.104 bool operator !=(const bTREE&
+                                    lhs, const bTREE& rhs)
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1685,7 +1958,7 @@ Missing character: There is no R in font nullfont!
 Missing character: There is no E in font nullfont!
 Missing character: There is no E in font nullfont!
 ! Misplaced alignment tab character &.
-l.102 ...perator !=(const bTREE& lhs, const bTREE&
+l.104 ...perator !=(const bTREE& lhs, const bTREE&
                                                    rhs)
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1704,65 +1977,75 @@ Missing character: There is no ( in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no h in font nullfont!
 Missing character: There is no s in font nullfont!
-Missing character: There is no - in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no a in font nullfont!
+Missing character: There is no . in font nullfont!
 Missing character: There is no t in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no - in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no | in font nullfont!
-Missing character: There is no | in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no - in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no - in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no ) in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no ; in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.106 	if(lhs.tree_
+                   ->data == rhs.tree_->data || lhs.tree_->time == rhs.tree_...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 102--109
+! Extra }, or forgotten $.
+l.110 }
+       
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.111 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 104--111
 []
+ []
+
+
+Overfull \hbox (17.30553pt too wide) in paragraph at lines 104--111
+[] \OML/cmm/m/it/10 >
+ []
+
+
+Overfull \hbox (37.72107pt too wide) in paragraph at lines 104--111
+\OML/cmm/m/it/10 data \OT1/cmr/m/n/10 ==
+ []
+
+
+Overfull \hbox (53.03477pt too wide) in paragraph at lines 104--111
+\OML/cmm/m/it/10 rhs:tree[] >
+ []
+
+
+Overfull \hbox (76.36931pt too wide) in paragraph at lines 104--111
+\OML/cmm/m/it/10 data\OMS/cmsy/m/n/10 jj\OML/cmm/m/it/10 lhs:tree[] >
+ []
+
+
+Overfull \hbox (38.82596pt too wide) in paragraph at lines 104--111
+\OML/cmm/m/it/10 time \OT1/cmr/m/n/10 ==
+ []
+
+
+Overfull \hbox (53.03477pt too wide) in paragraph at lines 104--111
+\OML/cmm/m/it/10 rhs:tree[] >
+ []
+
+
+Overfull \hbox (99.08324pt too wide) in paragraph at lines 104--111
+\OML/cmm/m/it/10 time\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 return\OT1/cmr/m/n/10 
+0;$ 
  []
 
 
@@ -1772,18 +2055,11 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.110 f
-       riend std::ostream& bTREE::operator <<(std::ostream& out, const bTREE...
-
+l.112 s
+       td::ostream& operator <<(std::ostream& out, const bTREE& p)
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-Missing character: There is no f in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no d in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no d in font nullfont!
@@ -1797,8 +2073,8 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no m in font nullfont!
 ! Misplaced alignment tab character &.
-l.110 friend std::ostream&
-                           bTREE::operator <<(std::ostream& out, const bTREE...
+l.112 std::ostream&
+                    operator <<(std::ostream& out, const bTREE& p)
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1806,13 +2082,6 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-Missing character: There is no b in font nullfont!
-Missing character: There is no T in font nullfont!
-Missing character: There is no R in font nullfont!
-Missing character: There is no E in font nullfont!
-Missing character: There is no E in font nullfont!
-Missing character: There is no : in font nullfont!
-Missing character: There is no : in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no e in font nullfont!
@@ -1837,8 +2106,8 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no m in font nullfont!
 ! Misplaced alignment tab character &.
-l.110 ...ostream& bTREE::operator <<(std::ostream&
-                                                   out, const bTREE& p)
+l.112 std::ostream& operator <<(std::ostream&
+                                              out, const bTREE& p)
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -1861,7 +2130,7 @@ Missing character: There is no R in font nullfont!
 Missing character: There is no E in font nullfont!
 Missing character: There is no E in font nullfont!
 ! Misplaced alignment tab character &.
-l.110 ...erator <<(std::ostream& out, const bTREE&
+l.112 ...erator <<(std::ostream& out, const bTREE&
                                                    p)
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1872,6 +2141,12 @@ might try typing `S' now just to see what is salvageable.
 
 Missing character: There is no p in font nullfont!
 Missing character: There is no ) in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no n in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no d in font nullfont!
@@ -1898,31 +2173,28 @@ Missing character: There is no " in font nullfont!
 Missing character: There is no < in font nullfont!
 Missing character: There is no < in font nullfont!
 Missing character: There is no p in font nullfont!
-Missing character: There is no - in font nullfont!
-Missing character: There is no > in font nullfont!
+Missing character: There is no . in font nullfont!
 Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no m in font nullfont!
+Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
-Missing character: There is no < in font nullfont!
-Missing character: There is no < in font nullfont!
-Missing character: There is no " in font nullfont!
-Missing character: There is no D in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no : in font nullfont!
-Missing character: There is no " in font nullfont!
-Missing character: There is no < in font nullfont!
-Missing character: There is no < in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no - in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no ; in font nullfont!
+Missing character: There is no e in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.114 ...urn std::cout << "Timestamp: " << p.tree_
+                                                  ->time << " Data: " << p.t...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.115 }
+       
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
 )
 ! Emergency stop.
 <*> bTREE.cpp
@@ -1933,7 +2205,7 @@ Missing character: There is no ; in font nullfont!
 Here is how much of TeX's memory you used:
  8 strings out of 492995
  151 string characters out of 6132704
- 57074 words of memory out of 5000000
+ 56074 words of memory out of 5000000
  3660 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191

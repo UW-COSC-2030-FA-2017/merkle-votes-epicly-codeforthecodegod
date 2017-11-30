@@ -12,7 +12,7 @@ class bTREE
         int time;
         treeNode * left_;
         treeNode * right_;
-        bool isLeaf();
+        //bool isLeaf();
     };
     
 private:
@@ -27,8 +27,10 @@ public:
     
     int dataInserted();
     
-    int numberOfNodes(const treeNode * subtree);
+    int numberOfNodes(treeNode * subtree);
+    int numberOfNodes();
     
+    int insert(string, int);
     int insert(treeNode * subtree, string data, int time);
     
     int find(const treeNode * subtree, string key);

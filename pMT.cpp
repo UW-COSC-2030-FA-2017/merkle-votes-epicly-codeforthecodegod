@@ -1,13 +1,12 @@
-
-pMT::pMT(int hashSelect)
+#include "pMT.h"
+pMT::pMT(int selectedHash)
 /**
  * @brief 
- * @param hashSelect a number corresponding to the hashfunction to use for this pMT
+ * @param selectedHash a number corresponding to the hashfunction to use for this pMT
  * @return 
  */
 {
-	nTree_ = new bTREE;
-	int time = time(0);
+	//int time = time(0);
 }
 
 pMT::~pMT()
@@ -26,34 +25,34 @@ int pMT::insert(string vote, int time)
  * @return the number of operations needed to do the insert, -1 if out of memory
  */
 {
-	time = time(0);
+	//time = time(0);
 	int operations = 0;
-	if(hashSelect == 1)
+	if(selectedHash == 1)
 	{
 		insert(hash_1(vote),time);
 	}
-	else if (hashSelect == 2)
+	else if (selectedHash == 2)
 	{
 		insert(hash_2(vote),time);
 	}
-	else if(hashSelect == 3)
+	else if(selectedHash == 3)
 	{
 		insert(hash_3(vote),time);
 	}
 	return operations;
 }
 
-int pMT::find(string vote, int time, int hashSelect)
+int pMT::find(string vote, int time, int selectedHash)
 /**
  * @brief given a vote, timestamp, and hash function, does this vote exist in the tree?
  * @param vote, a string
  * @param time, an int
- * @param hashSelect, an int corresponding to the hash functions _1, _2, and _3
+ * @param selectedHash, an int corresponding to the hash functions _1, _2, and _3
  * @return 0 if not found, else number of opperations required to find the matching vote
  */
 {
 	int operations = 0;
-	if(nTree.findHash(vote) = 1 && nTree.findHash(time) = 1 && nTree.findHash(hash) = 1)
+	if(find(vote, time, selectedHash) == 1)
 	{
 		operations = 1;
 		return operations;
@@ -73,9 +72,9 @@ int pMT::findHash(string mhash)
  */
 {
 	int operations = 0;
-	if(nTree_ != null)
+	if(myMerkle.numberOfNodes(myMerkle) != 0)
 	{
-		nTree_.locate(mhash);
+		myMerkle.locate(mhash);
 		operations = 1;
 		return operations;
 	}
@@ -95,10 +94,10 @@ string pMT::locateData(string vote)
  */
 {
 	int operations = 0;
-	if(nTree_ != null)
+	if(myMerkle != null)
 	{
-		nTree_.Tree_->left_.locate(vote);
-		nTree_.Tree_->right_.locate(vote);
+		myMerkle.Tree_->left_.locate(vote);
+		myMerkle.Tree_->right_.locate(vote);
 		operations = 2;
 		return operations;
 	}
@@ -116,10 +115,10 @@ string pMT::locateHash(string mhash)
  */
 {
 		int operations = 0;
-	if(nTree_ != null)
+	if(myMerkle != null)
 	{
-		nTree_.Tree_->left_.locate(mhash);
-		nTree_.Tree_->right_.locate(mhash);
+		myMerkle.Tree_->left_.locate(mhash);
+		myMerkle.Tree_->right_.locate(mhash);
 		operations = 2;
 		return operations;
 	}

@@ -19,8 +19,7 @@ public:
     
     
     int insert(string, int);
-    
-    int find(string);
+    int find(string vote, int time, int selectedHash);
     int findHash(string);
     
     string locate(string);
@@ -34,9 +33,9 @@ public:
     
 
     static void displayRight( std::ostream & outfile, 
-      BinaryNode * subtree, std::string prefix );
+      bTREE * subtree, std::string prefix );
 
     static void displayLeft( std::ostream & outfile, 
-      BinaryNode * subtree, std::string prefix );
+      bTREE * subtree, std::string prefix );
 };
 

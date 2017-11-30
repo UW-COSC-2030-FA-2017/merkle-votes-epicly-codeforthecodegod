@@ -2,8 +2,7 @@
 
 
 //look at descriptions in pMT.h for guidance on what you might need for these function to actually do
-bTREE::bTREE()
-	: tree_( NULL )
+bTREE::bTREE() : tree_ = NULL
 {
 
 }
@@ -18,14 +17,21 @@ int bTREE::dataInserted()
 	return 1;
 }
 
-int bTREE::numberOfNodes(const treeNode * subtree)
+int bTREE::numberOfNodes(){
+	return numberOfNodes(tree_);
+}
+
+int bTREE::numberOfNodes(treeNode * subtree) 
 {
 	if(subtree == NULL){
+		cout << "hey";
 		return 0;
 	} else {
-		return 1 + numberOfNodes(subtree->left_) + numberOfNodes(subtree->right_);
+		cout << "Sup";
+		return numberOfNodes(subtree->left_) + 1 + numberOfNodes(subtree->right_);
 	}
 }
+
 
 // int bTREE::size( const treeNode * subtree){
 // 	if(subtree == NULL){
@@ -35,24 +41,35 @@ int bTREE::numberOfNodes(const treeNode * subtree)
 // 	return 1 + size(subtree->left_) + size(subtree->right_);
 // }
 
+int bTREE::insert(string data, int time){
+	return insert(tree_, data, time);
+}
+
 int bTREE::insert(treeNode * subtree, string data, int time)
 {
     /* If the tree is empty, return a new node */
-    if (subtree == NULL) 
-    	{
-    		subtree->time = time;
-    		subtree->data = data;
-    		
-    	}
+    cout << "Sup cunt" << endl;
+
+    treeNode * baby = new treeNode;
+    baby->data = data;
+    baby->time = time;
+
+    if (numberOfNodes(subtree) == 0) {
+    	cout << "Here bitch!" << endl;
+    	subtree = baby;
+	    cout << "hur";
+    }
     /* Otherwise, recur down the tree */
     if (data < subtree->data){
-       return insert(subtree->left_, data, time);
+       insert(subtree->left_, data, time);
+       subtree->left_->right_ = subtree;
     }
     else if (data > subtree->data){ 
-    	return insert(subtree->right_, data, time);
+    	insert(subtree->right_, data, time);
+    	subtree->right_->left_ = subtree;
     }   
 
- 	return subtree->time;
+ 	return 1;
 }
 
 int bTREE::find(const treeNode * subtree, string key)
