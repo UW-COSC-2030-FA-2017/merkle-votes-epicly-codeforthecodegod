@@ -26,6 +26,7 @@ public:
     ~bTREE();
     
     int dataInserted();
+    
     int numberOfNodes(const treeNode * subtree);
     
     int insert(treeNode * subtree, string data, int time);
