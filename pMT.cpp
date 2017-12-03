@@ -1,12 +1,12 @@
 #include "pMT.h"
-pMT::pMT(int selectedHash)
+pMT::pMT(int selhash)
 /**
  * @brief 
  * @param selectedHash a number corresponding to the hashfunction to use for this pMT
  * @return 
  */
 {
-	//int time = time(0);
+	selectedHash = selhash;
 }
 
 pMT::~pMT()
@@ -75,7 +75,7 @@ int pMT::findHash(string mhash)
 	if(myMerkle.numberOfNodes(myMerkle) != 0)
 	{
 		myMerkle.locate(mhash);
-		operations = 1;
+		operations++;
 		return operations;
 	}
 	else
@@ -94,11 +94,12 @@ string pMT::locateData(string vote)
  */
 {
 	int operations = 0;
+	int cont = 0;
 	if(myMerkle != null)
 	{
 		myMerkle.Tree_->left_.locate(vote);
 		myMerkle.Tree_->right_.locate(vote);
-		operations = 2;
+		operations = (cont ++)*2;
 		return operations;
 	}
 	else
@@ -115,11 +116,12 @@ string pMT::locateHash(string mhash)
  */
 {
 		int operations = 0;
+		int cont = 0;
 	if(myMerkle != null)
 	{
 		myMerkle.Tree_->left_.locate(mhash);
 		myMerkle.Tree_->right_.locate(mhash);
-		operations = 2;
+		operations = (cont ++)*2;
 		return operations;
 	}
 	else
