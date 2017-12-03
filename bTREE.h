@@ -50,9 +50,9 @@ public:
     int insert(string, int);
     // returns timestamp if found
     int find(string key);
-    // returns true or false
-    //string locate();
-    
+    // returns the sequence to get to the data
+    string locate(string key);
+    void display(std::ostream& outfile) const;
 
     // void print();
 
@@ -70,6 +70,9 @@ private:
     int insert(treeNode *& subtree, string data, int time);
     void destroy(treeNode * & subtree);
     int find(treeNode * subtree, string key);
+    string locate(treeNode * subtree, string key);
+    static void displayLeft(std::ostream & outfile, treeNode * subtree, string prefix);
+    static void displayRight(std::ostream & outfile, treeNode * subtree, string prefix);
     //int find(const treeNode * subtree, string key);
     //string locate(const treeNode * subtree, string);
 

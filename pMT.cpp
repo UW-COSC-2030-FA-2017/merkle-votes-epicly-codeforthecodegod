@@ -29,15 +29,15 @@ int pMT::insert(string vote, int time)
 	int operations = 0;
 	if(selectedHash == 1)
 	{
-		insert(hash_1(vote),time);
+		myMerkle.insert(hash_1(vote),time);
 	}
 	else if (selectedHash == 2)
 	{
-		insert(hash_2(vote),time);
+		myMerkle.insert(hash_2(vote),time);
 	}
 	else if(selectedHash == 3)
 	{
-		insert(hash_3(vote),time);
+		myMerkle.insert(hash_3(vote),time);
 	}
 	return operations;
 }
@@ -51,17 +51,25 @@ int pMT::find(string vote, int time, int selectedHash)
  * @return 0 if not found, else number of opperations required to find the matching vote
  */
 {
+	int found;
 	int operations = 0;
-	if(find(vote, time, selectedHash) == 1)
+	if(selectedHash == 1)
 	{
-		operations = 1;
+		found = myMerkle.find(hash_1(vote));
+	}
+	else if (selectedHash == 2)
+	{
+		found = myMerkle.find(hash_2(vote));
+	}
+	else{
+		found = myMerkle.find(hash_3(vote));
+	}
+	operations++;
+	if(found == 0){
+		return found;
+	} else {
 		return operations;
 	}
-	else 
-	{
-		return operations;
-	}
-    
 }
 
 int pMT::findHash(string mhash)
@@ -71,15 +79,23 @@ int pMT::findHash(string mhash)
  * @return 0 if not found, else number of opperations required to find the matching hash
  */
 {
+	int found;
 	int operations = 0;
-	if(myMerkle.numberOfNodes(myMerkle) != 0)
+	if(selectedHash == 1)
 	{
-		myMerkle.locate(mhash);
-		operations++;
-		return operations;
+		found = myMerkle.find(mhash);
 	}
-	else
+	else if (selectedHash == 2)
 	{
+		found = myMerkle.find(mhash);
+	}
+	else{
+		found = myMerkle.find(mhash);
+	}
+	operations++;
+	if(found == 0){
+		return found;
+	} else {
 		return operations;
 	}
 
@@ -115,19 +131,7 @@ string pMT::locateHash(string mhash)
  * @return sequence of L's and R's comprising the movement to the hash node, ; else return a dot '.'
  */
 {
-		int operations = 0;
-		int cont = 0;
-	if(myMerkle != null)
-	{
-		myMerkle.Tree_->left_.locate(mhash);
-		myMerkle.Tree_->right_.locate(mhash);
-		operations = (cont ++)*2;
-		return operations;
-	}
-	else
-	{
-		return operations;
-	}
+	return myMerkle.locate(mhash);
 }
 
 
@@ -202,9 +206,7 @@ friend bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
  * @return true if equal, false otherwise
  */
 {
-	if(lhs.tree_->data == rhs.tree_->data && lhs.tree_->time == rhs.tree_->time){
-		return true;
-	}
+	//if()
 	return false;
 }
 
@@ -216,100 +218,115 @@ friend bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
  * @return true if not equal, false otherwise
  */
 {
-  if(lhs.tree_->data != rhs.tree_->data && lhs.tree_->time != rhs.tree_->time){
+  //if(lhs.tree_->data != rhs.tree_->data && lhs.tree_->time != rhs.tree_->time){
 		return true;
 	}
 	return false;  
 }
 
-friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
-/**
- * @brief XOR between two merkle trees
- * @param lhs, the left hand side of the equality statment
- * @param rhs, the right hand side of the equality statement
- * @return true if not equal, false otherwise
- */
-{
-    if(lhs.tree_->data ^= rhs.tree_->data && lhs.tree_->time ^= rhs.tree_->time){
-		return true;
-	}
-	return false;
+// friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
+
+// *
+//  * @brief XOR between two merkle trees
+//  * @param lhs, the left hand side of the equality statment
+//  * @param rhs, the right hand side of the equality statement
+//  * @return true if not equal, false otherwise
+ 
+// {
+//     //if(lhs.tree_->data ^= rhs.tree_->data && lhs.tree_->time ^= rhs.tree_->time){
+// 		return true;
+// 	}
+// 	return false;
+// }
+
+// friend std::ostream& pMT::operator <<(std::ostream& out, const pMT& p)
+// /**
+//  * @brief Print out a tree
+//  * @param out
+//  * @param p
+//  * @return a tree to the screen
+//  */
+// {
+
+// }
+
+// std::string prefix;
+//    if( tree_ == NULL )
+//    {
+//       out << "-" << std::endl;
+//    }
+//    else
+//    {
+//       displayLeft( out, tree_->left_, "    " );
+//       outfile << "---" << tree_->entry_ << std::endl;
+//       displayRight( out, tree_->right_, "    " );
+//    }
+// }
+
+
+// friend pMT pMT::operator ^(const pMT& lhs, const pMT& rhs)
+// *
+//  * @brief Where do two trees differ
+//  * @param lhs
+//  * @param rhs
+//  * @return a tree comprised of the right hand side tree nodes that are different from the left
+ 
+// {
+//  	bTREE diftree = new bTREE;
+//  	for(int i = 0; i < lhs.length; i++)
+//  	{
+//  		for(int j = 0; j < rhs.length;j++)
+//  		{
+// 	 		if (lhs.i != rhs.j)
+// 	 		{
+// 	 			diftree.insert(rhs.j);
+// 	 		}
+// 	 	}
+//  	}
+// }
+
+friend std::ostream& operator<<(std::ostream& out, const pMT& p){
+	return p.display(cout);
 }
 
 
-friend std::ostream& pMT::operator <<(std::ostream& out, const pMT& p)
-/**
- * @brief Print out a tree
- * @param out
- * @param p
- * @return a tree to the screen
- */
-{
+// void pMT::display(std::ostream& outfile) const {
+// 	string prefix;
+// 	if( p.myMerkle. == NULL){
+// 		outfile << "-" << endl;
+// 	} else {
+// 		displayLeft(outfile, p.myMerkle)
+// 	}
+// }
 
-std::string prefix;
-   if( tree_ == NULL )
-   {
-      out << "-" << std::endl;
-   }
-   else
-   {
-      displayLeft( out, tree_->left_, "    " );
-      outfile << "---" << tree_->entry_ << std::endl;
-      displayRight( out, tree_->right_, "    " );
-   }
-}
+// void 
+//    pMT:: displayLeft( std::ostream & outfile, 
+//    bTREE * subtree, std::string prefix )
+// {
+//    if( subtree == NULL )
+//    {
+//       outfile << prefix + "/" << std::endl;
+//    }
+//    else
+//    {
+//       displayLeft( outfile, subtree->left_, prefix + "     " );
+//       outfile << prefix + "/---" << subtree->entry_ << std::endl;
+//       displayRight( outfile, subtree->right_, prefix + "|    " );
+//    }
+// }
 
-
-friend pMT pMT::operator ^(const pMT& lhs, const pMT& rhs)
-/**
- * @brief Where do two trees differ
- * @param lhs
- * @param rhs
- * @return a tree comprised of the right hand side tree nodes that are different from the left
- */
-{
- 	bTREE diftree = new bTREE;
- 	for(int i = 0; i < lhs.length; i++)
- 	{
- 		for(int j = 0; j < rhs.length;j++)
- 		{
-	 		if (lhs.i != rhs.j)
-	 		{
-	 			diftree.insert(rhs.j);
-	 		}
-	 	}
- 	}
-}
-
-
-void 
-   pMT:: displayLeft( std::ostream & outfile, 
-   BinaryNode * subtree, std::string prefix )
-{
-   if( subtree == NULL )
-   {
-      outfile << prefix + "/" << std::endl;
-   }
-   else
-   {
-      displayLeft( outfile, subtree->left_, prefix + "     " );
-      outfile << prefix + "/---" << subtree->entry_ << std::endl;
-      displayRight( outfile, subtree->right_, prefix + "|    " );
-   }
-}
-
-void 
-   pMT:: displayRight( std::ostream & outfile, 
-   BinaryNode * subtree, std::string prefix )
-{
-   if( subtree == NULL )
-   {
-      outfile << prefix + "\\" << std::endl;
-   }
-   else
-   {
-      displayLeft( outfile, subtree->left_, prefix + "|    " );
-      outfile << prefix + "\\---" << subtree->entry_ << std::endl;
-      displayRight( outfile, subtree->right_, prefix + "     " );
-   }
-}
+// void 
+//    pMT:: displayRight( std::ostream & outfile, 
+//    bTREE * subtree, std::string prefix )
+// {
+//    if( subtree == NULL )
+//    {
+//       outfile << prefix + "\\" << std::endl;
+//    }
+//    else
+//    {
+//       displayLeft( outfile, subtree->left_, prefix + "|    " );
+//       outfile << prefix + "\\---" << subtree->entry_ << std::endl;
+//       displayRight( outfile, subtree->right_, prefix + "     " );
+//    }
+// }

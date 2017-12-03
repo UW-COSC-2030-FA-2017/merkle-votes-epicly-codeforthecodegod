@@ -88,3 +88,69 @@ int bTREE::find(treeNode * subtree, string key){
 		}
 	}
 }
+
+
+string bTREE::locate(string key){
+	return locate(tree_, key);
+}
+
+string bTREE::locate(treeNode * subtree, string key){
+	if(subtree == NULL){
+		return ".";
+	} else {
+		if( subtree->data_ == key ){
+			return "<" + key + ">";
+		} else {
+			string left = locate(subtree->left_, key);
+			string right = locate(subtree->right_, key);
+			if(left != "."){
+				return "l" + left;
+			} else if(right != "."){
+				return "r" + right;
+			} else {
+				return ".";
+			}
+		}
+	}
+}
+
+void bTREE::display(std::ostream& outfile) const {
+	string prefix;
+	if( tree_ == NULL){
+		outfile << "-" << endl;
+	} else {
+		displayLeft(outfile, tree_->left_, "    ");
+		outfile << "---" << tree_->data_ << endl;
+		displayRight(outfile, tree_->right_, "    ");
+	}
+}
+
+void bTREE::displayLeft( std::ostream & outfile, 
+   treeNode * subtree, std::string prefix )
+{
+   if( subtree == NULL )
+   {
+      outfile << prefix + "/" << std::endl;
+   }
+   else
+   {
+      displayLeft( outfile, subtree->left_, prefix + "     " );
+      outfile << prefix + "/---" << subtree->data_ << std::endl;
+      displayRight( outfile, subtree->right_, prefix + "|    " );
+   }
+}
+
+void bTREE::displayRight( std::ostream & outfile, 
+   treeNode * subtree, std::string prefix )
+{
+   if( subtree == NULL )
+   {
+      outfile << prefix + "\\" << std::endl;
+   }
+   else
+   {
+      displayLeft( outfile, subtree->left_, prefix + "|    " );
+      outfile << prefix + "\\---" << subtree->data_ << std::endl;
+      displayRight( outfile, subtree->right_, prefix + "     " );
+   }
+}
