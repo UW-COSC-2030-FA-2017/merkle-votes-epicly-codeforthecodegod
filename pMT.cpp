@@ -194,19 +194,29 @@ string pMT::hash_3(string key)//PJWHash lab9
          hash = (( hash ^ (test >> ThreeQuarters)) & (~HighBits));
       }
    }
+   return hash;
 }
 
-// bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
-// /**
-// * @brief Comparison between two merkle trees
-// * @param lhs, the left hand side of the equality statment
-// * @param rhs, the right hand side of the equality statement
-// * @return true if equal, false otherwise
-// */
-// {
-// //if()
-// return false;
-// }
+bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
+/**
+* @brief Comparison between two merkle trees
+* @param lhs, the left hand side of the equality statment
+* @param rhs, the right hand side of the equality statement
+* @return true if equal, false otherwise
+*/
+{
+if(lhs ==  NULL && rhs == NULL)
+{
+	return true;
+}
+else if(equal(lhs,rhs) == true)
+{
+	return true;
+}
+else
+{
+	return false;
+}
 
 // bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
 // /**
@@ -260,26 +270,26 @@ string pMT::hash_3(string key)//PJWHash lab9
 // }
 
 
-// friend pMT pMT::operator ^(const pMT& lhs, const pMT& rhs)
-// *
-//  * @brief Where do two trees differ
-//  * @param lhs
-//  * @param rhs
-//  * @return a tree comprised of the right hand side tree nodes that are different from the left
+/*friend pMT pMT::operator ^(const pMT& lhs, const pMT& rhs)
+
+ * @brief Where do two trees differ
+ * @param lhs
+ * @param rhs
+ * @return a tree comprised of the right hand side tree nodes that are different from the left
  
-// {
-//  	bTREE diftree = new bTREE;
-//  	for(int i = 0; i < lhs.length; i++)
-//  	{
-//  		for(int j = 0; j < rhs.length;j++)
-//  		{
-// 	 		if (lhs.i != rhs.j)
-// 	 		{
-// 	 			diftree.insert(rhs.j);
-// 	 		}
-// 	 	}
-//  	}
-// }
+{
+ 	bTREE diftree = new bTREE;
+ 	for(int i = 0; i < lhs.length; i++)
+ 	{
+ 		for(int j = 0; j < rhs.length;j++)
+ 		{
+	 		if (lhs.i != rhs.j)
+	 		{
+	 			diftree.insert(rhs.j);
+	 		}
+	 	}
+ 	}
+}*/
 
 std::ostream& pMT::display(std::ostream& out){
 	myMerkle.display(out);
