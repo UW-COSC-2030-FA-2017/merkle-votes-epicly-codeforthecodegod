@@ -13,14 +13,14 @@ class bTREE
         int time_;
         treeNode * left_;
         treeNode * right_;
-        //bool isLeaf();
+        bool isLeaf;
 
     public:
         treeNode( string data = "empty", 
-            int time = 0,
+            int time = 0, bool leaf = 1,
             treeNode * left = NULL,
             treeNode * right = NULL )
-            : data_(data), time_(time),
+            : data_(data), time_(time), isLeaf(leaf),
             left_(left),
             right_(right){
                 cout << "Node created!" << endl;

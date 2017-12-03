@@ -43,7 +43,6 @@ int bTREE::insert(string data, int time){
 int bTREE::insert(treeNode * &subtree, string data, int time){
 	cout << "here2";
 	if(subtree == NULL){
-		
 		cout << "here4";
 		subtree = new treeNode(data, time);
 		cout << "tree:" << tree_;
@@ -51,6 +50,7 @@ int bTREE::insert(treeNode * &subtree, string data, int time){
 		cout << "subtree: " << subtree->data_ << endl;
 	} else {
 		//delete subtree;
+		subtree->isLeaf = 0;
 		cout << "here3";
 		if(subtree->data_ > data){
 			return insert(subtree->left_, data, time);
@@ -135,7 +135,8 @@ void bTREE::displayLeft( std::ostream & outfile,
    else
    {
       displayLeft( outfile, subtree->left_, prefix + "     " );
-      outfile << prefix + "/---" << subtree->data_ << std::endl;
+      outfile << prefix + "/---" << subtree->data_ << " " << subtree->isLeaf 
+      << std::endl;
       displayRight( outfile, subtree->right_, prefix + "|    " );
    }
 }
@@ -150,7 +151,8 @@ void bTREE::displayRight( std::ostream & outfile,
    else
    {
       displayLeft( outfile, subtree->left_, prefix + "|    " );
-      outfile << prefix + "\\---" << subtree->data_ << std::endl;
+      outfile << prefix + "\\---" << subtree->data_ << " " << subtree->isLeaf 
+      << std::endl;
       displayRight( outfile, subtree->right_, prefix + "     " );
    }
 }
