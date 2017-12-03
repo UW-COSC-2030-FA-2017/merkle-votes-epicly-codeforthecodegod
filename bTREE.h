@@ -52,7 +52,7 @@ public:
     int find(string key);
     // returns the sequence to get to the data
     string locate(string key);
-    void display(std::ostream& outfile) const;
+    void display(std::ostream& outfile);
 
     // void print();
 

@@ -114,7 +114,7 @@ string bTREE::locate(treeNode * subtree, string key){
 	}
 }
 
-void bTREE::display(std::ostream& outfile) const {
+void bTREE::display(std::ostream& outfile){
 	string prefix;
 	if( tree_ == NULL){
 		outfile << "-" << endl;
@@ -123,6 +123,7 @@ void bTREE::display(std::ostream& outfile) const {
 		outfile << "---" << tree_->data_ << endl;
 		displayRight(outfile, tree_->right_, "    ");
 	}
+	//return outfile;
 }
 
 void bTREE::displayLeft( std::ostream & outfile, 

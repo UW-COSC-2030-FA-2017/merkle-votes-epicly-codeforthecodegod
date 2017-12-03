@@ -21,7 +21,10 @@ int main(){
 	cout << "locating crabs: " << test.locate("crabs") << endl;
 	cout << "locating benisa: " << test.locate("benisa") << endl;
 	cout << "tree" << endl;
-	test.display(cout);
+	//test.display(cout);
+	ostream& out;
+	test.myMerkle.display(out);
+	
 	//test.print();
 	//delete test;
 }

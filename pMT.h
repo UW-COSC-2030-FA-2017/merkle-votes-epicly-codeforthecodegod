@@ -16,26 +16,20 @@ private:
 public:
     pMT(int);
     ~pMT();
-    
+    std::ostream& display(std::ostream& out);
     
     int insert(string, int);
     int find(string vote, int time, int selectedHash);
     int findHash(string);
     
-    string locate(string);
+    string locateHash(string mhash);
     
-    friend bool operator==(const pMT& lhs, const pMT& rhs);
+    //friend bool operator==(const pMT& lhs, const pMT& rhs);
     
-    friend bool operator!=(const pMT& lhs, const pMT& rhs);
+    //friend bool operator!=(const pMT& lhs, const pMT& rhs);
     
-    friend pMT operator^(const pMT& lhs, const pMT& rhs);
+    //friend pMT operator^(const pMT& lhs, const pMT& rhs);
     friend std::ostream& operator<<(std::ostream& out, const pMT& p);
-    
 
-    static void displayRight( std::ostream & outfile, 
-      bTREE * subtree, std::string prefix );
-
-    static void displayLeft( std::ostream & outfile, 
-      bTREE * subtree, std::string prefix );
 };
 

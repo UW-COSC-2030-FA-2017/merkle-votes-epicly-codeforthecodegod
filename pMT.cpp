@@ -103,11 +103,10 @@ int pMT::findHash(string mhash)
 
 
 string pMT::locateData(string vote)
-/**
- * @brief Function takes a hash of Vote and returns the sequence of (L)eft and (R)ight moves to get to that node starting from root. 
- * @param vote, the data to search for 
- * @return sequence of L's and R's comprising the movement to the leaf node; else return a dot '.'
- */
+// *
+//  * @brief Function takes a hash of Vote and returns the sequence of (L)eft and (R)ight moves to get to that node starting from root. 
+//  * @param vote, the data to search for 
+//  * @return sequence of L's and R's comprising the movement to the leaf node; else return a dot '.'
 {
 	int operations = 0;
 	int cont = 0;
@@ -198,31 +197,29 @@ string pMT::hash_3(string key)//PJWHash lab9
    }
 }
 
-friend bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
-/**
- * @brief Comparison between two merkle trees
- * @param lhs, the left hand side of the equality statment
- * @param rhs, the right hand side of the equality statement
- * @return true if equal, false otherwise
- */
-{
-	//if()
-	return false;
-}
+// bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
+// /**
+// * @brief Comparison between two merkle trees
+// * @param lhs, the left hand side of the equality statment
+// * @param rhs, the right hand side of the equality statement
+// * @return true if equal, false otherwise
+// */
+// {
+// //if()
+// return false;
+// }
 
-friend bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
-/**
- * @brief Comparison between two merkle trees
- * @param lhs, the left hand side of the equality statment
- * @param rhs, the right hand side of the equality statement
- * @return true if not equal, false otherwise
- */
-{
-  //if(lhs.tree_->data != rhs.tree_->data && lhs.tree_->time != rhs.tree_->time){
-		return true;
-	}
-	return false;  
-}
+// bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
+// /**
+// * @brief Comparison between two merkle trees
+// * @param lhs, the left hand side of the equality statment
+// * @param rhs, the right hand side of the equality statement
+// * @return true if not equal, false otherwise
+// */
+// {
+// //if(lhs.tree_->data != rhs.tree_->data && lhs.tree_->time != rhs.tree_->time)
+// return false;  
+// }
 
 // friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
 
@@ -285,8 +282,14 @@ friend bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
 //  	}
 // }
 
-friend std::ostream& operator<<(std::ostream& out, const pMT& p){
-	return p.display(cout);
+std::ostream& pMT::display(std::ostream& out){
+	myMerkle.display(out);
+	return out;
+}
+
+
+std::ostream& operator<<(std::ostream& out, pMT& p){
+ 	return p.display(out);
 }
 
 
