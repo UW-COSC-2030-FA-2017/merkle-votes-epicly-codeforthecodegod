@@ -10,4 +10,5 @@ int main(){
 	cout << "finding penis by hash ('Wrong): " << test.findHash("33211002410") << endl;
 	cout << test;
 	cout << "locate by hash ('2481728102'): " << test.locateHash("2481728102") << endl; 
+	cout << "locate 'crusty': " << test.locateData("crusty") << endl; 
 }

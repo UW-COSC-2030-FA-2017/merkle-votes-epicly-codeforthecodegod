@@ -21,7 +21,7 @@ public:
     int insert(string, int);
     int find(string vote, int time, int selectedHash);
     int findHash(string);
-    
+    string locateData(string vote);
     string locateHash(string mhash);
     
     //friend bool operator==(const pMT& lhs, const pMT& rhs);

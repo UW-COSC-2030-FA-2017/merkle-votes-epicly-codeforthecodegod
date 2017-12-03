@@ -108,18 +108,17 @@ string pMT::locateData(string vote)
 //  * @param vote, the data to search for 
 //  * @return sequence of L's and R's comprising the movement to the leaf node; else return a dot '.'
 {
-	int operations = 0;
-	int cont = 0;
-	if(myMerkle != null)
+	int timestamp = myMerkle.find(vote);
+	if(selectedHash == 1)
 	{
-		myMerkle.Tree_->left_.locate(vote);
-		myMerkle.Tree_->right_.locate(vote);
-		operations = (cont ++)*2;
-		return operations;
+		return locateHash(hash_1(vote));
 	}
-	else
+	else if (selectedHash == 2)
 	{
-		return operations;
+		return locateHash(hash_2(vote));
+	}
+	else{
+		return locateHash(hash_3(vote));
 	}
 }
 

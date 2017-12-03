@@ -22,9 +22,8 @@ int main(){
 	cout << "locating benisa: " << test.locate("benisa") << endl;
 	cout << "tree" << endl;
 	//test.display(cout);
-	ostream& out;
-	test.myMerkle.display(out);
-	
+	//test.myMerkle.display(out);
+
 	//test.print();
 	//delete test;
 }
