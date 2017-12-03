@@ -7,12 +7,30 @@ using namespace std;
 class bTREE
 {
     
-    struct treeNode{
-        string data;
-        int time;
+    class treeNode{
+    public:
+        string data_;
+        int time_;
         treeNode * left_;
         treeNode * right_;
         //bool isLeaf();
+
+    public:
+        treeNode( string data = "empty", 
+            int time = 0,
+            treeNode * left = NULL,
+            treeNode * right = NULL )
+            : data_(data), time_(time),
+            left_(left),
+            right_(right){
+                cout << "Node created!" << endl;
+                cout << this << endl;
+            }
+        ~treeNode(){
+            }
+    private:
+        treeNode( const treeNode & );
+        const treeNode & operator =( const treeNode & );
     };
     
 private:
@@ -25,25 +43,34 @@ public:
     bTREE();
     ~bTREE();
     
-    int dataInserted();
+    string dataInserted();
     
-    int numberOfNodes(treeNode * subtree);
     int numberOfNodes();
     
     int insert(string, int);
-    int insert(treeNode * subtree, string data, int time);
+    //void destroy();
+    //int find(string key);
+    //string locate();
     
-    int find(const treeNode * subtree, string key);
-    
-    string locate(const treeNode * subtree, string);
 
+    // void print();
+
+    // void printList(treeNode * node);
+    
+    
+    // friend bool operator==(const bTREE& lhs, const bTREE& rhs);
+    // friend bool operator!=(const bTREE& lhs, const bTREE& rhs);
+
+    // friend std::ostream& operator<<(std::ostream& out, const bTREE& p);
+
+private:
+    string dataInserted(const treeNode * subtree);
+    int numberOfNodes( const treeNode * subtree);
+    int insert(treeNode *& subtree, string data, int time);
     void destroy(treeNode * & subtree);
-    
-    
-    friend bool operator==(const bTREE& lhs, const bTREE& rhs);
-    friend bool operator!=(const bTREE& lhs, const bTREE& rhs);
+    //int find(const treeNode * subtree, string key);
+    //string locate(const treeNode * subtree, string);
 
-    friend std::ostream& operator<<(std::ostream& out, const bTREE& p);
     
 };
 

@@ -2,9 +2,9 @@
 
 
 //look at descriptions in pMT.h for guidance on what you might need for these function to actually do
-bTREE::bTREE() : tree_ = NULL
+bTREE::bTREE() : tree_(NULL)
 {
-
+	cout << tree_;
 }
 
 bTREE::~bTREE() 
@@ -12,121 +12,64 @@ bTREE::~bTREE()
 	destroy( tree_ );
 }
 
-int bTREE::dataInserted()
+string bTREE::dataInserted()
 {
-	return 1;
+	return dataInserted(tree_);
+}
+
+string bTREE::dataInserted(const treeNode * subtree){
+	return subtree->data_;
 }
 
 int bTREE::numberOfNodes(){
-	return numberOfNodes(tree_);
-}
-
-int bTREE::numberOfNodes(treeNode * subtree) 
-{
-	if(subtree == NULL){
-		cout << "hey";
+	if(tree_ == NULL){
 		return 0;
-	} else {
-		cout << "Sup";
-		return numberOfNodes(subtree->left_) + 1 + numberOfNodes(subtree->right_);
 	}
+	return 1 + numberOfNodes(tree_->left_) + numberOfNodes(tree_->right_);
 }
 
+int bTREE::numberOfNodes(const treeNode * subtree){
+	if(subtree == NULL){
+		return 0;
+	}
+	return 1 + numberOfNodes(subtree->left_) + numberOfNodes(subtree->right_);
+}
 
-// int bTREE::size( const treeNode * subtree){
-// 	if(subtree == NULL){
-// 		return 0;
-// 	}
-
-// 	return 1 + size(subtree->left_) + size(subtree->right_);
-// }
 
 int bTREE::insert(string data, int time){
+	cout << "here";
 	return insert(tree_, data, time);
 }
 
-int bTREE::insert(treeNode * subtree, string data, int time)
-{
-    /* If the tree is empty, return a new node */
-    cout << "Sup cunt" << endl;
-
-    treeNode * baby = new treeNode;
-    baby->data = data;
-    baby->time = time;
-
-    if (numberOfNodes(subtree) == 0) {
-    	cout << "Here bitch!" << endl;
-    	subtree = baby;
-	    cout << "hur";
-    }
-    /* Otherwise, recur down the tree */
-    if (data < subtree->data){
-       insert(subtree->left_, data, time);
-       subtree->left_->right_ = subtree;
-    }
-    else if (data > subtree->data){ 
-    	insert(subtree->right_, data, time);
-    	subtree->right_->left_ = subtree;
-    }   
-
- 	return 1;
+int bTREE::insert(treeNode * &subtree, string data, int time){
+	cout << "here2";
+	if(subtree == NULL){
+		
+		cout << "here4";
+		subtree = new treeNode(data, time);
+		cout << "tree:" << tree_;
+		cout << (subtree == NULL);
+		cout << "subtree: " << subtree->data_ << endl;
+	} else {
+		//delete subtree;
+		cout << "here3";
+		if(subtree->data_ > data){
+			return insert(subtree->left_, data, time);
+		}
+		if(subtree->data_ < data){
+			return insert(subtree->right_, data, time);
+		}
+	}
+	return 1;
 }
 
-int bTREE::find(const treeNode * subtree, string key)
-{
-	if (subtree == NULL || subtree->data == key){
-		return subtree->time;
+void bTREE::destroy(treeNode * & subtree){
+	if(subtree != NULL){
+		destroy( subtree->left_);
+		destroy( subtree->right_);
+		delete subtree;
+		subtree = NULL;
+		cout << "Tree Destroyed!!" << endl;
 	}
 
-	if (subtree->data < key){
-		return find(subtree->right_, key);
-	}
-
-	return find(subtree->left_, key);
-}
-
-string bTREE::locate(const treeNode * subtree, string key)
-{
-	if (subtree== NULL || subtree->data == key){
-		return subtree->data;
-	}
-
-	if (subtree->data < key){
-		return locate(subtree->right_, key);
-	}
-
-	return locate(subtree->left_, key);
-}
-
-void 
-   bTREE:: destroy( treeNode * & subtree )
-{
-   if( subtree != NULL )
-   {
-      destroy( subtree->left_ );
-      destroy( subtree->right_ );
-      delete subtree;
-      subtree = NULL;
-   }
-}
-
-bool operator==(const bTREE& lhs, const bTREE& rhs)
-{
-	if(lhs.tree_->data == rhs.tree_->data && lhs.tree_->time == rhs.tree_->time){
-		return 1;
-	}
-	return 0;
-}
-
-bool operator !=(const bTREE& lhs, const bTREE& rhs)
-{
-	if(lhs.tree_->data == rhs.tree_->data || lhs.tree_->time == rhs.tree_->time){
-		return 1;
-	}
-	return 0;
-}
-
-std::ostream& operator <<(std::ostream& out, const bTREE& p)
-{
-	return std::cout << "Timestamp: " << p.tree_->time << " Data: " << p.tree_->data;
 }
