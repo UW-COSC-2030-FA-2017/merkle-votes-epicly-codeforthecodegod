@@ -13,6 +13,8 @@ int main(){
 	test.insert("bagina", 2);
 	//test.print();
 	cout << "Size now: " << test.numberOfNodes() << endl;
+	cout << "finding penis: " <<test.find("penis") << endl;
+	cout << "finding benis: " << test.find("benis") << endl;
 	//test.print();
 	//delete test;
 }

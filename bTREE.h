@@ -48,8 +48,9 @@ public:
     int numberOfNodes();
     
     int insert(string, int);
-    //void destroy();
-    //int find(string key);
+    // returns timestamp if found
+    int find(string key);
+    // returns true or false
     //string locate();
     
 
@@ -68,6 +69,7 @@ private:
     int numberOfNodes( const treeNode * subtree);
     int insert(treeNode *& subtree, string data, int time);
     void destroy(treeNode * & subtree);
+    int find(treeNode * subtree, string key);
     //int find(const treeNode * subtree, string key);
     //string locate(const treeNode * subtree, string);
 

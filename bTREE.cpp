@@ -35,7 +35,6 @@ int bTREE::numberOfNodes(const treeNode * subtree){
 	return 1 + numberOfNodes(subtree->left_) + numberOfNodes(subtree->right_);
 }
 
-
 int bTREE::insert(string data, int time){
 	cout << "here";
 	return insert(tree_, data, time);
@@ -72,4 +71,20 @@ void bTREE::destroy(treeNode * & subtree){
 		cout << "Tree Destroyed!!" << endl;
 	}
 
+}
+
+int bTREE::find(string key){
+	return find(tree_, key);
+}
+
+int bTREE::find(treeNode * subtree, string key){
+	if(subtree == NULL){
+		return 0;
+	} else {
+		if( subtree->data_ == key ){
+			return subtree->time_;
+		} else {
+			return find(subtree->left_, key) + find(subtree->right_,key);
+		}
+	}
 }
