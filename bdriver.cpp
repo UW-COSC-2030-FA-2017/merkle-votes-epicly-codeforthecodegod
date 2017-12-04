@@ -7,18 +7,18 @@ int main(){
 	//cout << test.dataInserted();
 	cout << "Adding one... " << endl;
 	
-	test.insert("penis", 1);
+	test.insert("stuff", 1);
 	//test.print();
 	cout << "Size now: " << test.numberOfNodes() << endl;
-	test.insert("bagina", 2);
-	test.insert("peepeepoopoo", 3);
-	test.insert("crabs", 4);
+	test.insert("things", 2);
+	test.insert("dank", 3);
+	test.insert("garbage", 4);
 	//test.print();
 	cout << "Size now: " << test.numberOfNodes() << endl;
-	cout << "finding penis: " <<test.find("penis") << endl;
+	cout << "finding stuff: " <<test.find("stuff") << endl;
 	cout << "finding benis: " << test.find("benis") << endl;
-	cout << "locating penis: " << test.locate("penis") << endl;
-	cout << "locating crabs: " << test.locate("crabs") << endl;
+	cout << "locating stuff: " << test.locate("stuff") << endl;
+	cout << "locating garbage: " << test.locate("garbage") << endl;
 	cout << "locating benisa: " << test.locate("benisa") << endl;
 	cout << "tree" << endl;
 	//test.display(cout);

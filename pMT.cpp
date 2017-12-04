@@ -205,53 +205,68 @@ bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
 * @return true if equal, false otherwise
 */
 {
-if(lhs ==  NULL && rhs == NULL)
+if(lhs.myMerkle->data == rhs.myMerkle->data && lhs.myMerkle->time == rhs.myMerkle->time)
 {
 	return true;
 }
-else if(equal(lhs,rhs) == true)
+else 
 {
-	return true;
+	return false;
+}
+
+bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
+/**
+* @brief Comparison between two merkle trees
+* @param lhs, the left hand side of the equality statment
+* @param rhs, the right hand side of the equality statement
+* @return true if not equal, false otherwise
+*/
+{
+
+if(lhs.myMerkle->data != rhs.myMerkle->data && lhs.myMerkle->time != rhs.myMerkle->time)
+{
+	return true;  
 }
 else
 {
 	return false;
 }
 
-// bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
-// /**
-// * @brief Comparison between two merkle trees
-// * @param lhs, the left hand side of the equality statment
-// * @param rhs, the right hand side of the equality statement
-// * @return true if not equal, false otherwise
-// */
-// {
-// //if(lhs.tree_->data != rhs.tree_->data && lhs.tree_->time != rhs.tree_->time)
-// return false;  
-// }
+friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
 
-// friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
+/*
+ * @brief XOR between two merkle trees
+ * @param lhs, the left hand side of the equality statment
+ * @param rhs, the right hand side of the equality statement
+ * @return true if not equal, false otherwise
+ */
+{
+    for(each node in lhs)
+    {
+    	for(each node i rhs)
+    	{
+    		if(lhs. == rnode)
+    		{
+    			delete rnode;
+				delete lnode;
+    		}
+    	}
+    }
+    for(for each node in rhs)
+    {
+    lhs.insert(Rnode;)
+	}
+	return lhs;
+}
 
-// *
-//  * @brief XOR between two merkle trees
-//  * @param lhs, the left hand side of the equality statment
-//  * @param rhs, the right hand side of the equality statement
-//  * @return true if not equal, false otherwise
- 
-// {
-//     //if(lhs.tree_->data ^= rhs.tree_->data && lhs.tree_->time ^= rhs.tree_->time){
-// 		return true;
-// 	}
-// 	return false;
-// }
-
+//its fine XD
 // friend std::ostream& pMT::operator <<(std::ostream& out, const pMT& p)
-// /**
+// *
 //  * @brief Print out a tree
 //  * @param out
 //  * @param p
 //  * @return a tree to the screen
-//  */
+ 
 // {
 
 // }
