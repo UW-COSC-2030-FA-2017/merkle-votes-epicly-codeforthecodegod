@@ -1,14 +1,17 @@
-#pragma once
+#ifndef BTREE_H_
+#define BTREE_H_
+
 #include <string>
 #include "time.h"
 #include <iostream>
 #include <list>
 #include <vector>
+#include "hashFuncs.h"
 using namespace std;
 
 class bTREE
 {
-    
+    public:
     class treeNode{
     public:
         string data_;
@@ -47,11 +50,11 @@ public:
     
     string dataInserted();
     void fromArray(vector<string> list);
-    void hashRents();
-    bool hashRents(treeNode *& subtree);
+    void hashRents(int selHash);
+    bool hashRents(treeNode *& subtree, int selHash);
     void childInsert(string data, int time);
     bool childInsert(treeNode *& subtree, string data, int time);
-    void baseCopy();
+    //void baseCopy();
     void spinsterPrune();
     bool spinsterPrune(treeNode *& subtree);
     void copyConstructor(int);
@@ -62,9 +65,9 @@ public:
     bool childAdd(int num);
     bool childAdd(treeNode *& subtree, int num);
     void copyBuilder(int);
-    int createBST(int);
-    int createBST(treeNode * &subtree, int start, int end);
-    void BSTconstruct(int);
+    //int createBST(int);
+    //int createBST(treeNode * &subtree, int start, int end);
+    //void BSTconstruct(int);
     int insert(string, int, bool);
     // returns timestamp if found
     int find(string key);
@@ -99,3 +102,4 @@ private:
     
 };
 
+#endif

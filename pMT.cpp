@@ -31,8 +31,10 @@ void pMT::fromArray(vector<string> childList){
 		cout << data;
 		insert(data, time);
 	}
+	myMerkle.hashRents(selectedHash);
 	myMerkle.display(cout);
 }
+
 
 int pMT::insert(string vote, int time)
 /**
@@ -211,7 +213,9 @@ string pMT::hash_3(string key)//PJWHash lab9
       }
    }
    return to_string(hash);
-}
+};
+
+
 
 // bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
 // /**

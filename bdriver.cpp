@@ -3,19 +3,18 @@
 #include <vector>
 using namespace std;
 int main(){
-	bTREE test;
-	cout << "Size: " << test.numberOfNodes() << endl;
-	//cout << test.dataInserted();
-	cout << "Adding one... " << endl;
 	bTREE pseudo;
-	for(int i = 1; i < 10; i++){
-		pseudo.copyBuilder(i);
-	}
-	pseudo.childInsert("works");
-	pseudo.childInsert("bear");
-	pseudo.display(cout);
-	pseudo.hashRents();
-	pseudo.display(cout);
+	//cout << test.dataInserted();
+	// cout << "Adding one... " << endl;
+	// bTREE pseudo;
+	// for(int i = 1; i < 10; i++){
+	// 	pseudo.copyBuilder(i);
+	// }
+	// pseudo.childInsert("works");
+	// pseudo.childInsert("bear");
+	// pseudo.display(cout);
+	// pseudo.hashRents();
+	// pseudo.display(cout);
 	vector<string> list{"a","b","c","d","e","f"};
 	pseudo.fromArray(list);
 	pseudo.display(cout);

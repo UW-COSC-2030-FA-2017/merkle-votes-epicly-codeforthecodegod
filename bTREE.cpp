@@ -40,7 +40,7 @@ void bTREE::fromArray(vector<string> list){
 	for(int i = 0; i < size; i++){
 		childInsert(list[i], time(NULL));
 	}
-	hashRents();
+	hashRents(1);
 }
 
 int bTREE::numberOfNodes(const treeNode * subtree){
@@ -50,34 +50,34 @@ int bTREE::numberOfNodes(const treeNode * subtree){
 	return 1 + numberOfNodes(subtree->left_) + numberOfNodes(subtree->right_);
 }
 
-void bTREE::childInsert(string data, int time){
+void bTREE::childInsert(string data, int time = 1){
 	childInsert(tree_, data, time);
 }
 
-void bTREE::hashRents(){
-	hashRents(tree_);
+void bTREE::hashRents(int selHash = 1){
+	hashRents(tree_, selHash);
 }
 
-bool bTREE::hashRents(treeNode *& subtree){
+bool bTREE::hashRents(treeNode *& subtree, int selHash = 1){
 	if(subtree == NULL){
 		return true;
 	} else if (subtree->isLeaf){
 		return true;
-	} else if(hashRents(subtree->left_) && hashRents(subtree->right_)) {
+	} else if(hashRents(subtree->left_, selHash) && hashRents(subtree->right_, selHash)) {
 		cout << "hashing" << endl;
 		subtree->time_ = time(NULL);
 		if(subtree->left_ != NULL && subtree->right_ != NULL){
-			subtree->data_ = subtree->left_->data_.substr(0, 2) + subtree->right_->data_.substr(0,2);
+			subtree->data_ = hasher(subtree->left_->data_ + subtree->right_->data_, selHash);
 		} else if(subtree->left_ != NULL){
-			subtree->data_ = subtree->left_->data_.substr(0,2);
+			subtree->data_ = hasher(subtree->left_->data_, selHash);
 		} else {
-			subtree->data_ = subtree->right_->data_.substr(0,2);
+			subtree->data_ = hasher(subtree->right_->data_, selHash);
 		}
 		return true;
 	}
 }
 
-bool bTREE::childInsert(treeNode * & subtree, string data, int time){
+bool bTREE::childInsert(treeNode * & subtree, string data, int time = 1){
 	//cout << "hey!" << endl;
 	if(subtree == NULL){
 		cout << "end of tree!" << endl;
@@ -174,13 +174,13 @@ void bTREE::copyBuilder(int childNum){
 		copyConstructor(childNum);
 	}
 	
-	display(cout);
+	//display(cout);
 }
 
 
-void bTREE::baseCopy(){
-	createBST(2);
-}
+// void bTREE::baseCopy(){
+// 	createBST(2);
+// }
 
 void bTREE::copyConstructor(int parentNum){
 	//baseCopy();
@@ -201,55 +201,55 @@ void bTREE::copyConstructor(treeNode * & subtree, int height, int count){
 	}
 }
 
-int bTREE::createBST(int childNum){
+// int bTREE::createBST(int childNum){
 	
-	int times = timesCalc(childNum);
-	cout << "times " << times << endl;
+// 	int times = timesCalc(childNum);
+// 	cout << "times " << times << endl;
 	
-	// while(times > 0){
-	// 		childNum = childNum + parentNumCalc(childNum);
-	// 		cout << "child num" << childNum << endl;
-	// 		times--;
-	// 	}
-	// if(childNum % 2 < 1 ){
-	// 	childNum = childNum - 1;
-	// }
+// 	// while(times > 0){
+// 	// 		childNum = childNum + parentNumCalc(childNum);
+// 	// 		cout << "child num" << childNum << endl;
+// 	// 		times--;
+// 	// 	}
+// 	// if(childNum % 2 < 1 ){
+// 	// 	childNum = childNum - 1;
+// 	// }
 	
-	if(childNum % 8 == 0){
-		childNum = childNum - 1;
-	}
+// 	if(childNum % 8 == 0){
+// 		childNum = childNum - 1;
+// 	}
 	
-	if(childNum % 3 < 2){
-		childNum = childNum - 1;
-	}
+// 	if(childNum % 3 < 2){
+// 		childNum = childNum - 1;
+// 	}
 	
-	cout << "child num" << childNum << endl;
-	createBST(tree_, 0, parentNumCalc(childNum));
-}
+// 	cout << "child num" << childNum << endl;
+// 	createBST(tree_, 0, parentNumCalc(childNum));
+// }
 
-int bTREE::createBST(treeNode * &subtree, int start, int end){
-	cout << "start: " << start << " end: " << end << endl;
-	if(start > end && start != end){
-		cout << "nil reached!" << endl;
-		return 1;
-	}
-	int mid;
-	int r;
-	if(end - start > 7 && (start -  end + 1) % 3 > 1 && start != end){
-		mid = 7;
-		r = end - start - mid - 2;
-	} else {
-		mid = (start + end) / 2;
-		r = mid + 1;
-	}
-	std::string node;
-	node = string("(") + to_string(start) + ", " + to_string(end) + ", " + to_string(mid) + ") ";
-	subtree = new treeNode(node);
-	cout << "node: " << node << "created!" << endl;
-	createBST(subtree->left_, start, mid - 1);
-	createBST(subtree->right_, r, end);
-	return 1;
-}
+// int bTREE::createBST(treeNode * &subtree, int start, int end){
+// 	cout << "start: " << start << " end: " << end << endl;
+// 	if(start > end && start != end){
+// 		cout << "nil reached!" << endl;
+// 		return 1;
+// 	}
+// 	int mid;
+// 	int r;
+// 	if(end - start > 7 && (start -  end + 1) % 3 > 1 && start != end){
+// 		mid = 7;
+// 		r = end - start - mid - 2;
+// 	} else {
+// 		mid = (start + end) / 2;
+// 		r = mid + 1;
+// 	}
+// 	std::string node;
+// 	node = string("(") + to_string(start) + ", " + to_string(end) + ", " + to_string(mid) + ") ";
+// 	subtree = new treeNode(node);
+// 	cout << "node: " << node << "created!" << endl;
+// 	createBST(subtree->left_, start, mid - 1);
+// 	createBST(subtree->right_, r, end);
+// 	return 1;
+// }
 
 void bTREE::empty(){
 	destroy(tree_);
@@ -262,19 +262,19 @@ void bTREE::childrenAdd(int numChildren){
 	}
 }
 
-void bTREE::BSTconstruct(int childNum){
-	if(tree_ != NULL){
-		destroy(tree_);
-	}
-	// if(childNum > 8){
-	// 	createBST(8);
-	// 	childrenAdd((8 * (childNum/8)));
-	// } else {
-		createBST(childNum);
-	// }
-	//childrenAdd(childNum);
-	display(cout);
-}
+// void bTREE::BSTconstruct(int childNum){
+// 	if(tree_ != NULL){
+// 		destroy(tree_);
+// 	}
+// 	// if(childNum > 8){
+// 	// 	createBST(8);
+// 	// 	childrenAdd((8 * (childNum/8)));
+// 	// } else {
+// 		createBST(childNum);
+// 	// }
+// 	//childrenAdd(childNum);
+// 	display(cout);
+// }
 
 bool bTREE::childAdd(int num){
 	return childAdd(tree_, num);
@@ -543,7 +543,7 @@ void bTREE::display(std::ostream& outfile){
 		outfile << "-" << endl;
 	} else {
 		displayLeft(outfile, tree_->left_, "    ");
-		outfile << "---" << tree_->data_ << " " << tree_->time_ << endl;
+		outfile << "-------" << tree_->data_ << " " << tree_->time_ << endl;
 		displayRight(outfile, tree_->right_, "    ");
 	}
 	//return outfile;
@@ -559,7 +559,7 @@ void bTREE::displayLeft( std::ostream & outfile,
    else
    {
       displayLeft( outfile, subtree->left_, prefix + "     " );
-      outfile << prefix + "/---" << subtree->data_ << " " << subtree->time_ 
+      outfile << prefix + "/------" << subtree->data_ << " " << subtree->time_ 
       << std::endl;
       displayRight( outfile, subtree->right_, prefix + "|    " );
    }
@@ -575,7 +575,7 @@ void bTREE::displayRight( std::ostream & outfile,
    else
    {
       displayLeft( outfile, subtree->left_, prefix + "|    " );
-      outfile << prefix + "\\---" << subtree->data_ << " " << subtree->time_ 
+      outfile << prefix + "\\------" << subtree->data_ << " " << subtree->time_ 
       << std::endl;
       displayRight( outfile, subtree->right_, prefix + "     " );
    }

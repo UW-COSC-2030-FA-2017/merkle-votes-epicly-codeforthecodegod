@@ -1,4 +1,5 @@
-
+#ifndef PMT_H_
+#define PMT_H_
 
 #include "bTREE.h"
 #include <string>
@@ -17,6 +18,8 @@ public:
     pMT(int);
     ~pMT();
     std::ostream& display(std::ostream& out);
+    void hashRents();
+    void hashRents(bTREE::treeNode *& subtree);
     void fromArray(vector<string> childList);
     int insert(string, int);
     int find(string vote, int time, int selectedHash);
@@ -36,3 +39,4 @@ public:
 
 };
 
+#endif
