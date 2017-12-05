@@ -1,0 +1,7 @@
+# TODO
+
+STEPS to TWERKLE:
+    1. Merkle Size Finder
+    2. Make a tree of that size
+    3. Fill the child nodes with the correct data
+    4. Update the non-child nodes with the correct hashes

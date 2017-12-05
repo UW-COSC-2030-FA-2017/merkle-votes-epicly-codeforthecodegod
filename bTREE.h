@@ -17,14 +17,14 @@ class bTREE
 
     public:
         treeNode( string data = "empty", 
-            int time = 0, bool leaf = 1,
+            int time = 0, bool leaf = false,
             treeNode * left = NULL,
             treeNode * right = NULL )
             : data_(data), time_(time), isLeaf(leaf),
             left_(left),
             right_(right){
-                cout << "Node created!" << endl;
-                cout << this << endl;
+                //cout << "Node created!" << endl;
+                //cout << this << endl;
             }
         ~treeNode(){
             }
@@ -44,16 +44,29 @@ public:
     ~bTREE();
     
     string dataInserted();
-    
+    void baseCopy();
+    void spinsterPrune();
+    bool spinsterPrune(treeNode *& subtree);
+    void copyConstructor(int);
+    void copyConstructor(treeNode * & subtree, int height, int count);
     int numberOfNodes();
-    
-    int insert(string, int);
+    void empty();
+    void childrenAdd(int);
+    bool childAdd(int num);
+    bool childAdd(treeNode *& subtree, int num);
+    void copyBuilder(int);
+    int createBST(int);
+    int createBST(treeNode * &subtree, int start, int end);
+    void BSTconstruct(int);
+    int insert(string, int, bool);
     // returns timestamp if found
     int find(string key);
     // returns the sequence to get to the data
     string locate(string key);
     void display(std::ostream& outfile);
-
+    void pseudoBuild(int v);
+    void pseudoInsert(string, int, int);
+    void pseudoInsert(treeNode * &subtree, string data, int time, int size, bool swch);
     // void print();
 
     // void printList(treeNode * node);
@@ -67,7 +80,7 @@ public:
 private:
     string dataInserted(const treeNode * subtree);
     int numberOfNodes( const treeNode * subtree);
-    int insert(treeNode *& subtree, string data, int time);
+    int insert(treeNode *& subtree, string data, int time, bool leaf);
     void destroy(treeNode * & subtree);
     int find(treeNode * subtree, string key);
     string locate(treeNode * subtree, string key);

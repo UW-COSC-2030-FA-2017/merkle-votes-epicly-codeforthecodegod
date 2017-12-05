@@ -11,5 +11,4 @@ int main(){
 	cout << test;
 	cout << "locate by hash ('2481728102'): " << test.locateHash("2481728102") << endl; 
 	cout << "locate 'garbage': " << test.locateData("garbage") << endl; 
-
 }

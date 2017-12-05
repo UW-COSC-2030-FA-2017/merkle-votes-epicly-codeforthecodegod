@@ -241,22 +241,23 @@ friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
  * @return true if not equal, false otherwise
  */
 {
-    for(each node in lhs)
-    {
-    	for(each node i rhs)
-    	{
-    		if(lhs. == rnode)
-    		{
-    			delete rnode;
-				delete lnode;
-    		}
-    	}
-    }
-    for(for each node in rhs)
-    {
-    lhs.insert(Rnode;)
-	}
-	return lhs;
+	bTREE diftree = new bTREE;
+ 	for(int i = 0; i < lhs.length; i++)
+ 	{
+ 		for(int j = 0; j < rhs.length;j++)
+ 		{
+	 		if (lhs.i == rhs.j)
+	 		{
+	 			delete lhs.i;
+	 			delete rhs.j;
+	 		}
+	 	}
+ 	}
+ 	for(int r = 0; j < rhs.length;r++ )
+ 	{
+ 		lhs.insert(rhs.r);
+ 	}
+ 	return lhs;
 }
 
 //its fine XD
@@ -285,7 +286,7 @@ friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
 // }
 
 
-/*friend pMT pMT::operator ^(const pMT& lhs, const pMT& rhs)
+friend pMT pMT::operator ^(const pMT& lhs, const pMT& rhs)
 
  * @brief Where do two trees differ
  * @param lhs
@@ -300,11 +301,17 @@ friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
  		{
 	 		if (lhs.i != rhs.j)
 	 		{
-	 			diftree.insert(rhs.j);
+	 			delete lhs.i;
+	 			delete rhs.j;
 	 		}
 	 	}
  	}
-}*/
+ 	for(int r = 0; j < rhs.length;r++ )
+ 	{
+ 		rhs.insert(lhs.r);
+ 	}
+ 	return rhs;
+}
 
 std::ostream& pMT::display(std::ostream& out){
 	myMerkle.display(out);
