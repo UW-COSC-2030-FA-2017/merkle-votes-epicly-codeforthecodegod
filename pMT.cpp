@@ -318,7 +318,7 @@ pMT operator ^( pMT& lhs, pMT& rhs)
      std::cout << v << "\n";
    std::vector<string> tempVect{ std::begin(xr), std::end(xr) };
    temp.fromArray(tempVect);
-	return temp;
+   return temp;
 }
 
 std::ostream& pMT::display(std::ostream& out){

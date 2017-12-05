@@ -13,10 +13,15 @@ vector<string> stripper(string fileName){
 	file.open(fileName);
 	string header;
 	if(file.is_open()){
+		//cout<< "file open!" << endl;
 		getline(file, header);
+		//cout << header << endl;
+		//cout << "past first getline" << endl;
 		while(getline(file, str)){
+			//cout << str << endl;
 			vect.push_back(str);
 		}
+		//for (auto v : vect) std::cout << v << "\n";
 		file.close();
 		return vect;
 	} else {

@@ -37,7 +37,7 @@ This homework counts for your 4th 5th and 6th homeworks.
 Submit your answers on WyoCourses
 
 ## Part Three
-1. Create a vote.cc with a main function that stores 'time stamped' votes into your pmTree data structure
+1. Create a vote.cpp with a main function that stores 'time stamped' votes into your pmTree data structure
 2. Vote Data will be a string in the following format RANDOM:CANDIDATE
 3. You will be provided with sample voterFiles.
 4. Your program should be able to:

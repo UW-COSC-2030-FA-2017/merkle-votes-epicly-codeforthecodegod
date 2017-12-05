@@ -1,4 +1,5 @@
 data	timestamp
+butt    3
 1348937365:Candidate3	1
 4FCF8F701:Candidate3	1
 A02BB2124:Candidate1	2
