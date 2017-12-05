@@ -50,8 +50,8 @@ int bTREE::numberOfNodes(const treeNode * subtree){
 	return 1 + numberOfNodes(subtree->left_) + numberOfNodes(subtree->right_);
 }
 
-void bTREE::childInsert(string data){
-	childInsert(tree_, data);
+void bTREE::childInsert(string data, int time){
+	childInsert(tree_, data, time);
 }
 
 void bTREE::hashRents(){
@@ -77,7 +77,7 @@ bool bTREE::hashRents(treeNode *& subtree){
 	}
 }
 
-bool bTREE::childInsert(treeNode * & subtree, string data){
+bool bTREE::childInsert(treeNode * & subtree, string data, int time){
 	//cout << "hey!" << endl;
 	if(subtree == NULL){
 		cout << "end of tree!" << endl;
@@ -92,7 +92,7 @@ bool bTREE::childInsert(treeNode * & subtree, string data){
 		}
 	} else if(subtree->data_.at(0) == '#'){
 		cout << "child found!" << endl;
-		subtree->time_ = time(NULL);
+		subtree->time_ = time;
 		subtree->data_ = data;
 		return true;
 	}

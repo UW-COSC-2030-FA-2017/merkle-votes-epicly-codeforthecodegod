@@ -1,4 +1,6 @@
 #include "pMT.h"
+#include <string>
+#include <sstream>
 pMT::pMT(int selhash)
 /**
  * @brief 
@@ -17,6 +19,19 @@ pMT::~pMT()
 {
 }
 
+void pMT::fromArray(vector<string> childList){
+	int size = childList.size();
+	myMerkle.copyBuilder(size);
+	for(int i = 0; i < size; i++){
+		string unscanned = childList[i];
+		istringstream is( unscanned );
+		string data;
+		int time;
+		is >> data >> time;
+		insert(data, time);
+	}
+}
+
 int pMT::insert(string vote, int time)
 /**
  * @brief insert a vote and time into a leaf node of tree
@@ -26,20 +41,19 @@ int pMT::insert(string vote, int time)
  */
 {
 	//time = time(0);
-	int operations = 0;
 	if(selectedHash == 1)
 	{
-		myMerkle.insert(hash_1(vote),time);
+		myMerkle.childInsert(hash_1(vote),time);
 	}
 	else if (selectedHash == 2)
 	{
-		myMerkle.insert(hash_2(vote),time);
+		myMerkle.childInsert(hash_2(vote),time);
 	}
 	else if(selectedHash == 3)
 	{
-		myMerkle.insert(hash_3(vote),time);
+		myMerkle.childInsert(hash_3(vote),time);
 	}
-	return operations;
+	return 1;
 }
 
 int pMT::find(string vote, int time, int selectedHash)
@@ -194,71 +208,72 @@ string pMT::hash_3(string key)//PJWHash lab9
          hash = (( hash ^ (test >> ThreeQuarters)) & (~HighBits));
       }
    }
-   return hash;
+   return to_string(hash);
 }
 
-bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
-/**
-* @brief Comparison between two merkle trees
-* @param lhs, the left hand side of the equality statment
-* @param rhs, the right hand side of the equality statement
-* @return true if equal, false otherwise
-*/
-{
-if(lhs.myMerkle->data == rhs.myMerkle->data && lhs.myMerkle->time == rhs.myMerkle->time)
-{
-	return true;
-}
-else 
-{
-	return false;
-}
+// bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
+// /**
+// * @brief Comparison between two merkle trees
+// * @param lhs, the left hand side of the equality statment
+// * @param rhs, the right hand side of the equality statement
+// * @return true if equal, false otherwise
+// */
+// {
+// 	if(lhs.myMerkle->data == rhs.myMerkle->data && lhs.myMerkle->time == rhs.myMerkle->time)
+// 	{
+// 		return true;
+// 	}
+// 	else 
+// 	{
+// 		return false;
+// 	}
+// }
 
-bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
-/**
-* @brief Comparison between two merkle trees
-* @param lhs, the left hand side of the equality statment
-* @param rhs, the right hand side of the equality statement
-* @return true if not equal, false otherwise
-*/
-{
+// bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
+// /**
+// * @brief Comparison between two merkle trees
+// * @param lhs, the left hand side of the equality statment
+// * @param rhs, the right hand side of the equality statement
+// * @return true if not equal, false otherwise
+// */
+// {
 
-if(lhs.myMerkle->data != rhs.myMerkle->data && lhs.myMerkle->time != rhs.myMerkle->time)
-{
-	return true;  
-}
-else
-{
-	return false;
-}
+// if(lhs.myMerkle->data != rhs.myMerkle->data && lhs.myMerkle->time != rhs.myMerkle->time)
+// {
+// 	return true;  
+// }
+// else
+// {
+// 	return false;
+// }
 
-friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
+// friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
 
-/*
- * @brief XOR between two merkle trees
- * @param lhs, the left hand side of the equality statment
- * @param rhs, the right hand side of the equality statement
- * @return true if not equal, false otherwise
- */
-{
-	bTREE diftree = new bTREE;
- 	for(int i = 0; i < lhs.length; i++)
- 	{
- 		for(int j = 0; j < rhs.length;j++)
- 		{
-	 		if (lhs.i == rhs.j)
-	 		{
-	 			delete lhs.i;
-	 			delete rhs.j;
-	 		}
-	 	}
- 	}
- 	for(int r = 0; j < rhs.length;r++ )
- 	{
- 		lhs.insert(rhs.r);
- 	}
- 	return lhs;
-}
+// /*
+//  * @brief XOR between two merkle trees
+//  * @param lhs, the left hand side of the equality statment
+//  * @param rhs, the right hand side of the equality statement
+//  * @return true if not equal, false otherwise
+//  */
+// {
+// 	bTREE diftree = new bTREE;
+//  	for(int i = 0; i < lhs.length; i++)
+//  	{
+//  		for(int j = 0; j < rhs.length;j++)
+//  		{
+// 	 		if (lhs.i == rhs.j)
+// 	 		{
+// 	 			delete lhs.i;
+// 	 			delete rhs.j;
+// 	 		}
+// 	 	}
+//  	}
+//  	for(int r = 0; j < rhs.length;r++ )
+//  	{
+//  		lhs.insert(rhs.r);
+//  	}
+//  	return lhs;
+// }
 
 //its fine XD
 // friend std::ostream& pMT::operator <<(std::ostream& out, const pMT& p)
@@ -286,42 +301,42 @@ friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
 // }
 
 
-friend pMT pMT::operator ^(const pMT& lhs, const pMT& rhs)
+// friend pMT pMT::operator ^(const pMT& lhs, const pMT& rhs)
 
- * @brief Where do two trees differ
- * @param lhs
- * @param rhs
- * @return a tree comprised of the right hand side tree nodes that are different from the left
+//  * @brief Where do two trees differ
+//  * @param lhs
+//  * @param rhs
+//  * @return a tree comprised of the right hand side tree nodes that are different from the left
  
-{
- 	bTREE diftree = new bTREE;
- 	for(int i = 0; i < lhs.length; i++)
- 	{
- 		for(int j = 0; j < rhs.length;j++)
- 		{
-	 		if (lhs.i != rhs.j)
-	 		{
-	 			delete lhs.i;
-	 			delete rhs.j;
-	 		}
-	 	}
- 	}
- 	for(int r = 0; j < rhs.length;r++ )
- 	{
- 		rhs.insert(lhs.r);
- 	}
- 	return rhs;
-}
+// {
+//  	bTREE diftree = new bTREE;
+//  	for(int i = 0; i < lhs.length; i++)
+//  	{
+//  		for(int j = 0; j < rhs.length;j++)
+//  		{
+// 	 		if (lhs.i != rhs.j)
+// 	 		{
+// 	 			delete lhs.i;
+// 	 			delete rhs.j;
+// 	 		}
+// 	 	}
+//  	}
+//  	for(int r = 0; j < rhs.length;r++ )
+//  	{
+//  		rhs.insert(lhs.r);
+//  	}
+//  	return rhs;
+// }
 
-std::ostream& pMT::display(std::ostream& out){
-	myMerkle.display(out);
-	return out;
-}
+// std::ostream& pMT::display(std::ostream& out){
+// 	myMerkle.display(out);
+// 	return out;
+// }
 
 
-std::ostream& operator<<(std::ostream& out, pMT& p){
- 	return p.display(out);
-}
+// std::ostream& operator<<(std::ostream& out, pMT& p){
+//  	return p.display(out);
+// }
 
 
 // void pMT::display(std::ostream& outfile) const {

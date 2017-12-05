@@ -49,8 +49,8 @@ public:
     void fromArray(vector<string> list);
     void hashRents();
     bool hashRents(treeNode *& subtree);
-    void childInsert(string data);
-    bool childInsert(treeNode *& subtree, string data);
+    void childInsert(string data, int time);
+    bool childInsert(treeNode *& subtree, string data, int time);
     void baseCopy();
     void spinsterPrune();
     bool spinsterPrune(treeNode *& subtree);
