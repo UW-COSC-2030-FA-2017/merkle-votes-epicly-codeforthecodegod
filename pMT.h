@@ -16,6 +16,7 @@ private:
     string hash_1(string);
     string hash_2(string);
     string hash_3(string);
+    string hash_4(string);
     
 public:
     pMT(int);

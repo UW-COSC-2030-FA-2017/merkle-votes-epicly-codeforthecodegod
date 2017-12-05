@@ -50,16 +50,41 @@ inline string hash3(string key){
     return to_string(hash);
 }
 
+inline string hash4(string key){
+  int prime = 41;
+  int big = 1543;
+  char toHash[key.size() + 1];
+  strcpy(toHash, key.c_str());
+  int result = 0;
+  for (auto v : toHash){
+    result += (prime^v) % big;
+  }
+  result = (prime^result) % big;
+  return to_string(result);
+}
+
 inline string hasher(string data, int selHash){
+    
     if(selHash == 1){
+    
         return hash1(data);
+    
     } else if (selHash == 2){
+    
         return hash2(data);
+    
     } else if (selHash == 3){
+    
         return hash3(data);
+    
+    } else if(selHash == 4){
+
+        return hash4(data);
+    
     } else {
-        return data;
+      return data;
     }
+
 }
 
 #endif 

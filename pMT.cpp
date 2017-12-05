@@ -1,6 +1,7 @@
 #include "pMT.h"
 #include <string>
 #include <sstream>
+#include <math.h>
 pMT::pMT(int selhash)
 /**
  * @brief 
@@ -49,9 +50,9 @@ void pMT::fromArray(vector<string> childList){
 	
 	myMerkle.hashRents(selectedHash);
 	
-	cout << "--------------------------" << endl;
+	cout << "----------------------------------------------------------" << endl;
 	cout << "Array: " << endl;
-	cout << "--------------------------" << endl;
+	cout << "----------------------------------------------------------" << endl;
 	
 	int count = 0;
 	
@@ -62,10 +63,10 @@ void pMT::fromArray(vector<string> childList){
 	
 	}
    	
-   	cout << "--------------------------" << endl;
+   	cout << "----------------------------------------------------------" << endl;
 	
 	cout << "Array Size: " << count << endl;
-	cout << "--------------------------" << endl <<endl;
+	cout << "----------------------------------------------------------" << endl <<endl;
 	
 	string input;
 	
@@ -75,7 +76,7 @@ void pMT::fromArray(vector<string> childList){
 	if(input == "y"){
 	
 		myMerkle.display(cout);
-		cout << "--------------------------" << endl <<endl;
+		cout << "----------------------------------------------------------" << endl <<endl;
 	
 	}
 }
@@ -289,6 +290,19 @@ string pMT::hash_3(string key)//PJWHash lab9
       }
    }
    return to_string(hash);
+}
+
+string pMT::hash_4(string key){
+	int prime = 17;
+	int big = prime * 6 + 1;
+	char toHash[key.size() + 1];
+	strcpy(toHash, key.c_str());
+	int result = 0;
+	for (auto v : toHash){
+		result += (prime^v) % big;
+	}
+	result = (prime^result) % big;
+	return to_string(result);
 };
 
 
