@@ -21,7 +21,7 @@ public:
     pMT(int);
     ~pMT();
     std::ostream& display(std::ostream& out);
-    void hashRents();
+    //void hashRents();
     void hashRents(bTREE::treeNode *& subtree);
     void fromArray(vector<string> childList);
     int insert(string, int);
@@ -30,6 +30,7 @@ public:
     string locateData(string vote);
     string locateHash(string mhash);
     list<string> toList();
+    string getRoot();
     
     friend bool operator==(pMT& lhs, pMT& rhs); // = comparison 
     
@@ -37,7 +38,7 @@ public:
 
     friend pMT operator^=( pMT& lhs, pMT& rhs); //
     
-    // friend pMT operator^(const pMT& lhs, const pMT& rhs);
+    friend pMT operator^( pMT& lhs,  pMT& rhs);
 
     friend std::ostream& operator<<(std::ostream& out, const pMT& p); //display function
     

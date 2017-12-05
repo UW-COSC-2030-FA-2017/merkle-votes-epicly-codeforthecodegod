@@ -48,6 +48,7 @@ public:
     bTREE();
     ~bTREE();
     
+    
     string dataInserted();
     void fromArray(vector<string> list);
     void hashRents(int selHash);
@@ -64,8 +65,7 @@ public:
     bool childAdd(int num);
     bool childAdd(treeNode *& subtree, int num);
     void copyBuilder(int);
-    //int insert(string, int, bool);
-    
+    string getRoot();
     int find(string key);
     string locate(string key);
     void display(std::ostream& outfile);
@@ -76,14 +76,12 @@ public:
 private:
     string dataInserted(const treeNode * subtree);
     int numberOfNodes( const treeNode * subtree);
-    //int insert(treeNode *& subtree, string data, int time, bool leaf);
     void destroy(treeNode * & subtree);
     int find(treeNode * subtree, string key);
     string locate(treeNode * subtree, string key);
     static void displayLeft(std::ostream & outfile, treeNode * subtree, string prefix);
     static void displayRight(std::ostream & outfile, treeNode * subtree, string prefix);
-    //int find(const treeNode * subtree, string key);
-    //string locate(const treeNode * subtree, string);
+    
 
     
 };

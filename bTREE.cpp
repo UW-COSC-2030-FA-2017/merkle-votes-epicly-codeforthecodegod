@@ -17,6 +17,10 @@ bTREE::~bTREE()
 	destroy( tree_ );
 }
 
+string bTREE::getRoot(){
+	return tree_->data_;
+}
+
 string bTREE::dataInserted()
 {
 	return dataInserted(tree_);

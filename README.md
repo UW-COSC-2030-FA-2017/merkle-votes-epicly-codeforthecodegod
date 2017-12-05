@@ -52,7 +52,9 @@ Poster will be due at the time of final code submission
 
 You must change this readme file to contain the names of your group members as well as the mathematical functions you have each implemented for your hash functions
 
-Connor Harber -pjw & rs hash's   hash 1/3
-Kip DeCastro  -js hash           hash 2
-
+Connor/kip (taken from lab 9){
+               -pjw hash             hash 1
+               -rs  hash        hash 3
+               -js  hash           hash 2
+                            }
 Used an amazon cloud 9 to work at the same time, so although kip has submitted allot of push's to git hub, we were both working at the same time on the same things so equal work could be done quicker.

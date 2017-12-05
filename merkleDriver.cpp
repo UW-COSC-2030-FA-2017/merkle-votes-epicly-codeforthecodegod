@@ -8,4 +8,6 @@ int main(){
 	vector<string> ree{"b\t2","c\t2","d\t1","e\t3","f\t4"};
 	test2.fromArray(ree);
 	test ^= test2;
+	cout << (test == test2) << endl;
+	
 }

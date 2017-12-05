@@ -19,6 +19,10 @@ pMT::~pMT()
 {
 }
 
+string pMT::getRoot(){
+	return myMerkle.getRoot();
+}
+
 void pMT::fromArray(vector<string> childList){
 	int size = childList.size();
 	myMerkle.copyBuilder(size);
@@ -287,30 +291,6 @@ pMT operator ^=(pMT& lhs, pMT& rhs)
 	return temp;
 }
 
-//its fine XD
-// friend std::ostream& pMT::operator <<(std::ostream& out, const pMT& p)
-// *
-//  * @brief Print out a tree
-//  * @param out
-//  * @param p
-//  * @return a tree to the screen
- 
-// {
-
-// }
-
-// std::string prefix;
-//    if( tree_ == NULL )
-//    {
-//       out << "-" << std::endl;
-//    }
-//    else
-//    {
-//       displayLeft( out, tree_->left_, "    " );
-//       outfile << "---" << tree_->entry_ << std::endl;
-//       displayRight( out, tree_->right_, "    " );
-//    }
-// }
 
 
 pMT operator ^( pMT& lhs, pMT& rhs)
@@ -324,17 +304,19 @@ pMT operator ^( pMT& lhs, pMT& rhs)
  	list<string> left;
  	list<string> right;
  	list<string> xr;
- 	//list<string> xr2;
+ 	list<string> xr2;
  	left.splice(left.end(), lhs.toList());
  	right.splice(right.end(), rhs.toList());
 	std::set_difference(left.begin(), left.end(), right.begin(), right.end(), std::inserter(xr, xr.begin()));
-	std::vector<string> tempVect{ std::begin(xr), std::end(xr) };
-	pMT temp(1);
+	std::set_difference(right.begin(), right.end(), left.begin(), left.end(), std::inserter(xr2, xr2.begin()));
 	
+	
+	pMT temp(1);
+	xr.splice(xr.end(),xr2);
 	cout << "Unique HASHES: " << endl;
 	for (auto v : xr)
      std::cout << v << "\n";
-   cout << "hashing" << endl;
+   std::vector<string> tempVect{ std::begin(xr), std::end(xr) };
    temp.fromArray(tempVect);
 	return temp;
 }
@@ -349,44 +331,3 @@ std::ostream& operator<<(std::ostream& out, pMT& p){
  	return p.display(out);
 }
 
-
-// void pMT::display(std::ostream& outfile) const {
-// 	string prefix;
-// 	if( p.myMerkle. == NULL){
-// 		outfile << "-" << endl;
-// 	} else {
-// 		displayLeft(outfile, p.myMerkle)
-// 	}
-// }
-
-// void 
-//    pMT:: displayLeft( std::ostream & outfile, 
-//    bTREE * subtree, std::string prefix )
-// {
-//    if( subtree == NULL )
-//    {
-//       outfile << prefix + "/" << std::endl;
-//    }
-//    else
-//    {
-//       displayLeft( outfile, subtree->left_, prefix + "     " );
-//       outfile << prefix + "/---" << subtree->entry_ << std::endl;
-//       displayRight( outfile, subtree->right_, prefix + "|    " );
-//    }
-// }
-
-// void 
-//    pMT:: displayRight( std::ostream & outfile, 
-//    bTREE * subtree, std::string prefix )
-// {
-//    if( subtree == NULL )
-//    {
-//       outfile << prefix + "\\" << std::endl;
-//    }
-//    else
-//    {
-//       displayLeft( outfile, subtree->left_, prefix + "|    " );
-//       outfile << prefix + "\\---" << subtree->entry_ << std::endl;
-//       displayRight( outfile, subtree->right_, prefix + "     " );
-//    }
-// }
