@@ -38,6 +38,53 @@ int bTREE::numberOfNodes(const treeNode * subtree){
 	return 1 + numberOfNodes(subtree->left_) + numberOfNodes(subtree->right_);
 }
 
+void bTREE::childInsert(string data, int time){
+	childInsert(tree_, data, time);
+}
+
+void bTREE::hashRents(){
+	hashRents(tree_);
+}
+
+bool bTREE::hashRents(treeNode *& subtree){
+	if(subtree == NULL){
+		return true;
+	} else if (subtree->isLeaf){
+		return true;
+	} else if(hashRents(subtree->left_) && hashRents(subtree->right_)) {
+		cout << "hashing" << endl;
+		if(subtree->left_ != NULL && subtree->right_ != NULL){
+			subtree->data_ = subtree->left_->data_.substr(0, 2) + subtree->right_->data_.substr(0,2);
+		} else if(subtree->left_ != NULL){
+			subtree->data_ = subtree->left_->data_.substr(0,2);
+		} else {
+			subtree->data_ = subtree->right_->data_.substr(0,2);
+		}
+		return true;
+	}
+}
+
+bool bTREE::childInsert(treeNode * & subtree, string data, int time){
+	//cout << "hey!" << endl;
+	if(subtree == NULL){
+		cout << "end of tree!" << endl;
+		return false;
+		
+	} else if(!subtree->isLeaf){
+		cout << "subtree: " << subtree->data_ << endl;
+		if(!childInsert(subtree->left_, data, time)){
+			return childInsert(subtree->right_, data, time);
+		} else {
+			return true;
+		}
+	} else {
+		cout << "child found!" << endl;
+		subtree->data_ = data;
+		subtree->time_ = time;
+		return true;
+	}
+}
+
 // void bTREE::createBST(int childNum){
 // 	tree_ = createBST(0, treeSizeCalc(childNum) -1);
 // }

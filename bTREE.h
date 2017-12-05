@@ -44,6 +44,10 @@ public:
     ~bTREE();
     
     string dataInserted();
+    void hashRents();
+    bool hashRents(treeNode *& subtree);
+    void childInsert(string data, int time);
+    bool childInsert(treeNode *& subtree, string data, int time);
     void baseCopy();
     void spinsterPrune();
     bool spinsterPrune(treeNode *& subtree);

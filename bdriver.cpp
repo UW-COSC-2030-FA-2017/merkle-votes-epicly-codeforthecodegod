@@ -10,6 +10,10 @@ int main(){
 	for(int i = 1; i < 10; i++){
 		pseudo.copyBuilder(i);
 	}
+	pseudo.childInsert("works", 1);
+	pseudo.display(cout);
+	pseudo.hashRents();
+	pseudo.display(cout);
 	
 	// test.insert("stuff", 1);
 	// //test.print();

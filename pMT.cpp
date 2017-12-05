@@ -20,7 +20,7 @@ pMT::~pMT()
 int pMT::insert(string vote, int time)
 /**
  * @brief insert a vote and time into a leaf node of tree
- * @param vote - a string
+ * @param vote - a stringd
  * @param time - an int representing the time 
  * @return the number of operations needed to do the insert, -1 if out of memory
  */
