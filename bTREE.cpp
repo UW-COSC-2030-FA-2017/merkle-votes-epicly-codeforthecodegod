@@ -1,6 +1,8 @@
 #include "bTREE.h"
 #include "merkFuncs.cpp"
 #include <string>
+#include <time.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -31,6 +33,16 @@ int bTREE::numberOfNodes(){
 	return 1 + numberOfNodes(tree_->left_) + numberOfNodes(tree_->right_);
 }
 
+void bTREE::fromArray(vector<string> list){
+	int size = list.size();
+	cout << "size: " << size << endl;
+	copyBuilder(size);
+	for(int i = 0; i < size; i++){
+		childInsert(list[i]);
+	}
+	hashRents();
+}
+
 int bTREE::numberOfNodes(const treeNode * subtree){
 	if(subtree == NULL){
 		return 0;
@@ -38,8 +50,8 @@ int bTREE::numberOfNodes(const treeNode * subtree){
 	return 1 + numberOfNodes(subtree->left_) + numberOfNodes(subtree->right_);
 }
 
-void bTREE::childInsert(string data, int time){
-	childInsert(tree_, data, time);
+void bTREE::childInsert(string data){
+	childInsert(tree_, data);
 }
 
 void bTREE::hashRents(){
@@ -53,6 +65,7 @@ bool bTREE::hashRents(treeNode *& subtree){
 		return true;
 	} else if(hashRents(subtree->left_) && hashRents(subtree->right_)) {
 		cout << "hashing" << endl;
+		subtree->time_ = time(NULL);
 		if(subtree->left_ != NULL && subtree->right_ != NULL){
 			subtree->data_ = subtree->left_->data_.substr(0, 2) + subtree->right_->data_.substr(0,2);
 		} else if(subtree->left_ != NULL){
@@ -64,7 +77,7 @@ bool bTREE::hashRents(treeNode *& subtree){
 	}
 }
 
-bool bTREE::childInsert(treeNode * & subtree, string data, int time){
+bool bTREE::childInsert(treeNode * & subtree, string data){
 	//cout << "hey!" << endl;
 	if(subtree == NULL){
 		cout << "end of tree!" << endl;
@@ -72,15 +85,15 @@ bool bTREE::childInsert(treeNode * & subtree, string data, int time){
 		
 	} else if(!subtree->isLeaf){
 		cout << "subtree: " << subtree->data_ << endl;
-		if(!childInsert(subtree->left_, data, time)){
-			return childInsert(subtree->right_, data, time);
+		if(!childInsert(subtree->left_, data)){
+			return childInsert(subtree->right_, data);
 		} else {
 			return true;
 		}
-	} else {
+	} else if(subtree->data_.at(0) == '#'){
 		cout << "child found!" << endl;
+		subtree->time_ = time(NULL);
 		subtree->data_ = data;
-		subtree->time_ = time;
 		return true;
 	}
 }
@@ -271,14 +284,14 @@ bool bTREE::childAdd(treeNode * &subtree, int num){
 	if(!subtree->isLeaf){
 		if(subtree->left_ == NULL && subtree->right_==NULL){
 			cout << subtree->data_ << " Adding to the left: ";
-			subtree->left_ = new treeNode("child " + to_string(num), 1, true);
+			subtree->left_ = new treeNode("#child " + to_string(num), 1, true);
 			cout << "Success!" << endl;
 			return true;
 			
 
 		} else if(subtree->right_ == NULL && subtree->left_->isLeaf){
 			cout << subtree->data_ << " Adding to the right: ";
-			subtree->right_ = new treeNode("child " + to_string(num), 1, true);
+			subtree->right_ = new treeNode("#child " + to_string(num), 1, true);
 			cout << "Success!" << endl;
 			return true;
 		}

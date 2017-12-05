@@ -1,5 +1,6 @@
 #include "bTREE.cpp"
 #include <iostream>
+#include <vector>
 using namespace std;
 int main(){
 	bTREE test;
@@ -10,9 +11,13 @@ int main(){
 	for(int i = 1; i < 10; i++){
 		pseudo.copyBuilder(i);
 	}
-	pseudo.childInsert("works", 1);
+	pseudo.childInsert("works");
+	pseudo.childInsert("bear");
 	pseudo.display(cout);
 	pseudo.hashRents();
+	pseudo.display(cout);
+	vector<string> list{"a","b","c","d","e","f"};
+	pseudo.fromArray(list);
 	pseudo.display(cout);
 	
 	// test.insert("stuff", 1);
