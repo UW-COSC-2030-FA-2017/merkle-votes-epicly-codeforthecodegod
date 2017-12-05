@@ -19,45 +19,69 @@ pMT::~pMT()
 {
 }
 
+
+// Get the root hash
 string pMT::getRoot(){
+
 	return myMerkle.getRoot();
+
 }
 
+
+// Builds the tree from a vector of child nodes
 void pMT::fromArray(vector<string> childList){
+
 	int size = childList.size();
 	myMerkle.copyBuilder(size);
+
 	for(int i = 0; i < size; i++){
+
 		string unscanned = childList[i];
 		istringstream is( unscanned );
 		string data;
 		int time;
+
 		is >> data >> time;
-		//cout << data;
+		
 		insert(data, time);
+	
 	}
+	
 	myMerkle.hashRents(selectedHash);
+	
 	cout << "--------------------------" << endl;
 	cout << "Array: " << endl;
 	cout << "--------------------------" << endl;
+	
 	int count = 0;
+	
 	for (auto v : childList){
+	
 		count++;
         std::cout << v << "\n";
+	
 	}
-   cout << "--------------------------" << endl;
+   	
+   	cout << "--------------------------" << endl;
 	
 	cout << "Array Size: " << count << endl;
 	cout << "--------------------------" << endl <<endl;
+	
 	string input;
+	
 	cout << "Display the tree?(y/n) ";
 	cin >> input;
+	
 	if(input == "y"){
+	
 		myMerkle.display(cout);
 		cout << "--------------------------" << endl <<endl;
+	
 	}
 }
 
 
+// Inserts a vote and a timestamp into a child node on the tree
 int pMT::insert(string vote, int time)
 /**
  * @brief insert a vote and time into a leaf node of tree
@@ -66,24 +90,14 @@ int pMT::insert(string vote, int time)
  * @return the number of operations needed to do the insert, -1 if out of memory
  */
 {
-	//time = time(0);
-	// if(selectedHash == 1)
-	// {
-	// 	myMerkle.childInsert(hash_1(vote),time);
-	// }
-	// else if (selectedHash == 2)
-	// {
-	// 	myMerkle.childInsert(hash_2(vote),time);
-	// }
-	// else if(selectedHash == 3)
-	// {
-	// 	myMerkle.childInsert(hash_3(vote),time);
-	// }
 
 	myMerkle.childInsert(hasher(vote,selectedHash),time);
+
 	return 1;
+
 }
 
+// Finds a vote given the time and hash
 int pMT::find(string vote, int time, int selectedHash)
 /**
  * @brief given a vote, timestamp, and hash function, does this vote exist in the tree?
@@ -93,31 +107,46 @@ int pMT::find(string vote, int time, int selectedHash)
  * @return 0 if not found, else number of opperations required to find the matching vote
  */
 {
+
 	int found;
 	int operations = 0;
-	if(selectedHash == 1)
-	{
+	
+	if(selectedHash == 1){
+
 		found = myMerkle.find(hash_1(vote));
-	}
-	else if (selectedHash == 2)
-	{
+	
+	} else if (selectedHash == 2) {
+		
 		found = myMerkle.find(hash_2(vote));
-	}
-	else{
-		found = myMerkle.find(hash_3(vote));
-	}
-	operations++;
-	if(found == 0){
-		return found;
+	
 	} else {
-		return operations;
+	
+		found = myMerkle.find(hash_3(vote));
+	
 	}
+	
+	operations++;
+	
+	if(found == 0){
+	
+		return found;
+	
+	} else {
+	
+		return operations;
+	
+	}
+
 }
 
+// Returns a list composed of the nodes which make up the tree
 list<string> pMT::toList(){
+	
 	return myMerkle.toList();
+
 }
 
+// Finds a hash on the tree
 int pMT::findHash(string mhash)
 /**
  * @brief does this hash exist in the tree?
@@ -125,24 +154,34 @@ int pMT::findHash(string mhash)
  * @return 0 if not found, else number of opperations required to find the matching hash
  */
 {
+
 	int found;
 	int operations = 0;
-	if(selectedHash == 1)
-	{
+	
+	if(selectedHash == 1){
+
 		found = myMerkle.find(mhash);
-	}
-	else if (selectedHash == 2)
-	{
+	
+	} else if (selectedHash == 2){
+
 		found = myMerkle.find(mhash);
-	}
-	else{
-		found = myMerkle.find(mhash);
-	}
-	operations++;
-	if(found == 0){
-		return found;
+	
 	} else {
+		
+		found = myMerkle.find(mhash);
+	
+	}
+	
+	operations++;
+	
+	if(found == 0){
+	
+		return found;
+	
+	} else {
+	
 		return operations;
+	
 	}
 
 }
@@ -154,18 +193,23 @@ string pMT::locateData(string vote)
 //  * @param vote, the data to search for 
 //  * @return sequence of L's and R's comprising the movement to the leaf node; else return a dot '.'
 {
+
 	int timestamp = myMerkle.find(vote);
-	if(selectedHash == 1)
-	{
+
+	if(selectedHash == 1){
+
 		return locateHash(hash_1(vote));
-	}
-	else if (selectedHash == 2)
-	{
+	
+	} else if (selectedHash == 2) {
+
 		return locateHash(hash_2(vote));
-	}
-	else{
+	
+	} else {
+
 		return locateHash(hash_3(vote));
-	}
+    
+    }
+
 }
 
 string pMT::locateHash(string mhash)
@@ -175,7 +219,9 @@ string pMT::locateHash(string mhash)
  * @return sequence of L's and R's comprising the movement to the hash node, ; else return a dot '.'
  */
 {
+
 	return myMerkle.locate(mhash);
+
 }
 
 
@@ -193,8 +239,10 @@ string pMT::hash_1(string key) //RSHash lab 9
 
    for(std::size_t i = 0; i < key.length(); i++)
    {
+
       hash = hash * a + key[i];
       a    = a * b;
+
    }
 
    return to_string(hash);
@@ -253,11 +301,9 @@ bool operator ==(pMT& lhs, pMT& rhs)
 * @return true if equal, false otherwise
 */
 {
-	// list<string> left;
-	// list<string> right;
-	// left.splice(left.end(), lhs.toList());
-	// right.splice(left.end(), rhs.toList());
+	
 	return (lhs.getRoot() == rhs.getRoot());
+
 }
 
  bool operator !=(pMT& lhs, pMT& rhs)
@@ -271,7 +317,6 @@ bool operator ==(pMT& lhs, pMT& rhs)
  	return (lhs.getRoot() == rhs.getRoot());
 }
 pMT operator ^=(pMT& lhs, pMT& rhs)
-
 /*
  * @brief XOR between two merkle trees
  * @param lhs, the left hand side of the equality statment
@@ -279,23 +324,31 @@ pMT operator ^=(pMT& lhs, pMT& rhs)
  * @return true if not equal, false otherwise
  */
 {
+
  	list<string> left;
  	list<string> right;
  	list<string> xr;
  	list<string> xr2;
+ 	
  	left.splice(left.end(), lhs.toList());
  	right.splice(right.end(), rhs.toList());
+	
 	std::set_difference(left.begin(), left.end(), right.begin(), right.end(), std::inserter(xr, xr.begin()));
 	std::set_difference(right.begin(), right.end(), left.begin(), left.end(), std::inserter(xr2, xr2.begin()));
 	
 	
 	pMT temp(1);
+	
 	xr.splice(xr.end(),xr2);
+	
 	cout << "Unique HASHES: " << endl;
-	for (auto v : xr)
-     std::cout << v << "\n";
-   std::vector<string> tempVect{ std::begin(xr), std::end(xr) };
-   temp.fromArray(tempVect);
+	
+	for (auto v : xr) std::cout << v << "\n";
+
+   	std::vector<string> tempVect{ std::begin(xr), std::end(xr) };
+   	
+   	temp.fromArray(tempVect);
+	
 	return temp;
 }
 
@@ -313,29 +366,41 @@ pMT operator ^( pMT& lhs, pMT& rhs)
  	list<string> right;
  	list<string> xr;
  	list<string> xr2;
+ 	
  	left.splice(left.end(), lhs.toList());
  	right.splice(right.end(), rhs.toList());
+	
 	std::set_difference(left.begin(), left.end(), right.begin(), right.end(), std::inserter(xr, xr.begin()));
 	std::set_difference(right.begin(), right.end(), left.begin(), left.end(), std::inserter(xr2, xr2.begin()));
 	
 	
 	pMT temp(1);
+	
 	xr.splice(xr.end(),xr2);
+	
 	cout << "Unique HASHES: " << endl;
-	for (auto v : xr)
-     std::cout << v << "\n";
-   std::vector<string> tempVect{ std::begin(xr), std::end(xr) };
-   temp.fromArray(tempVect);
-   return temp;
+	
+	for (auto v : xr) std::cout << v << "\n";
+
+   	std::vector<string> tempVect{ std::begin(xr), std::end(xr) };
+   	
+   	temp.fromArray(tempVect);
+	
+	return temp;
 }
 
 std::ostream& pMT::display(std::ostream& out){
+
 	myMerkle.display(out);
+	
 	return out;
+
 }
 
 
 std::ostream& operator<<(std::ostream& out, pMT& p){
+
  	return p.display(out);
+
 }
 
