@@ -18,7 +18,7 @@ int main(){
 	// pseudo.hashRents();
 	// pseudo.display(cout);
 	vector<string> alist{"a","b","c","d","e","f"};
-	pseudo.fromArray(alist);
+	pseudo.fromList(alist);
 	pseudo.display(cout);
 	list<string> myList;
 	myList.splice(myList.end(), pseudo.toList());

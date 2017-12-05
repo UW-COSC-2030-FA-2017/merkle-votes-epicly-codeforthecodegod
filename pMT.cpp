@@ -39,11 +39,22 @@ void pMT::fromArray(vector<string> childList){
 	cout << "--------------------------" << endl;
 	cout << "Array: " << endl;
 	cout << "--------------------------" << endl;
-	for (auto v : childList)
+	int count = 0;
+	for (auto v : childList){
+		count++;
         std::cout << v << "\n";
+	}
    cout << "--------------------------" << endl;
-	myMerkle.display(cout);
-	cout << "--------------------------" << endl <<endl;;
+	
+	cout << "Array Size: " << count << endl;
+	cout << "--------------------------" << endl <<endl;
+	string input;
+	cout << "Display the tree?(y/n) ";
+	cin >> input;
+	if(input == "y"){
+		myMerkle.display(cout);
+		cout << "--------------------------" << endl <<endl;
+	}
 }
 
 
@@ -68,7 +79,8 @@ int pMT::insert(string vote, int time)
 	// {
 	// 	myMerkle.childInsert(hash_3(vote),time);
 	// }
-	myMerkle.childInsert(vote,time);
+
+	myMerkle.childInsert(hasher(vote,selectedHash),time);
 	return 1;
 }
 
@@ -241,11 +253,11 @@ bool operator ==(pMT& lhs, pMT& rhs)
 * @return true if equal, false otherwise
 */
 {
-	list<string> left;
-	list<string> right;
-	left.splice(left.end(), lhs.toList());
-	right.splice(left.end(), rhs.toList());
-	return (left == right);
+	// list<string> left;
+	// list<string> right;
+	// left.splice(left.end(), lhs.toList());
+	// right.splice(left.end(), rhs.toList());
+	return (lhs.getRoot() == rhs.getRoot());
 }
 
  bool operator !=(pMT& lhs, pMT& rhs)
@@ -256,11 +268,7 @@ bool operator ==(pMT& lhs, pMT& rhs)
  * @return true if not equal, false otherwise
  */
  {
- 	list<string> left;
-	list<string> right;
-	left.splice(left.end(), lhs.myMerkle.toList());
-	right.splice(left.end(), rhs.myMerkle.toList());
-	return (left != right);
+ 	return (lhs.getRoot() == rhs.getRoot());
 }
 pMT operator ^=(pMT& lhs, pMT& rhs)
 

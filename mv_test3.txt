@@ -1,6 +1,4 @@
 data	timestamp
-butt    3
-but     4
 1348937365:Candidate3	1
 4FCF8F701:Candidate3	1
 A02BB2124:Candidate1	2
@@ -43,3 +41,5 @@ BF5B70596:Candidate2	33
 9EA0B10DC:Candidate3	39
 1659F7AB6E:Candidate2	40
 9999483CB:Candidate1	41
+butt    3
+but     4

@@ -85,15 +85,13 @@ void treeCompare(){
 	
 	if(tree1 == tree2)
 	{
-		cout << "Tree's are equal!";
+		cout << "Trees are equal!" << endl;
 	}
-	else if(tree1 != tree2)
-	{
-		cout << "Tree's are not equal!";
+	else {
+		cout << "Tree's are not equal!" << endl;
 		cout << spacer << endl;
-		cout << "Tree's Differ: \n";
-		tree1 ^ tree2;
-		cout << "\n";
+		//tree1=^ tree2;
+		//cout << "\n";
 		cout << "Xor: \n";
 		tree1 ^= tree2;
 		cout << "\n";

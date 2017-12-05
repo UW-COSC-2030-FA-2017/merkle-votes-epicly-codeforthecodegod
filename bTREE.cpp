@@ -37,7 +37,7 @@ int bTREE::numberOfNodes(){
 	return 1 + numberOfNodes(tree_->left_) + numberOfNodes(tree_->right_);
 }
 
-void bTREE::fromArray(vector<string> list){
+void bTREE::fromList(vector<string> list){
 	int size = list.size();
 	//cout << "size: " << size << endl;
 	copyBuilder(size);
@@ -65,23 +65,22 @@ void bTREE::hashRents(int selHash = 0){
 bool bTREE::hashRents(treeNode *& subtree, int selHash = 0){
 	if(subtree == NULL){
 		return true;
-	} else if (subtree->isLeaf){
-		//cout << "Leaf hit!" << endl;
+	}else if (subtree->isLeaf){
+	// 	//cout << "Leaf hit!" << endl;
 		return true;
 	} else if(hashRents(subtree->left_, selHash) && hashRents(subtree->right_, selHash)) {
 	//	cout << "hashing" << endl;
 		//cout << "hashing subtree: " << subtree->data_ << " leaf: " << subtree->isLeaf << endl;
 		subtree->time_ = time(NULL);
 		
-			if(subtree->left_ != NULL && subtree->right_ != NULL){
-				subtree->data_ = hasher(subtree->left_->data_ + subtree->right_->data_, selHash);
-			} else if(subtree->right_ != NULL){
-				subtree->data_ = hasher(subtree->right_->data_, selHash);
-			} else	{
-				subtree->data_ = hasher(subtree->left_->data_, selHash);
-				return true;
-			}
-		
+		if(subtree->left_ != NULL && subtree->right_ != NULL){
+			subtree->data_ = hasher(subtree->left_->data_ + subtree->right_->data_, selHash);
+		} else if(subtree->right_ != NULL){
+			subtree->data_ = hasher(subtree->right_->data_, selHash);
+		} else	{
+			subtree->data_ = hasher(subtree->left_->data_, selHash);
+		}
+		return true;
 	}
 }
 
@@ -92,17 +91,18 @@ bool bTREE::childInsert(treeNode * & subtree, string data, int time = 1){
 		return false;
 		
 	} else if(!subtree->isLeaf){
-	//	cout << "subtree: " << subtree->data_ << endl;
+		//cout << "subtree: " << subtree->data_ << endl;
 		if(!childInsert(subtree->left_, data, time)){
 			return childInsert(subtree->right_, data, time);
 		} else {
 			return true;
 		}
-	} else if(subtree->data_.at(0) == '#'){
-	//	cout << "child found!" << endl;
+	} else if(subtree->data_.at(0) == '#'){ 
+	//if(subtree->data_.at(0) == '#'){
+		//cout << "child found!" << endl;
 		subtree->time_ = time;
 		subtree->data_ = data;
-		subtree->isLeaf = true;
+		//subtree->isLeaf = true;
 		return true;
 	}
 }
@@ -175,9 +175,12 @@ void bTREE::copyBuilder(int childNum){
 	// } else {
 	if(childNum > 2){
 		copyConstructor(parentNumCalc(childNum));
+		//display(cout);
 	// }
 		childrenAdd(childNum);
+		//display(cout);
 		spinsterPrune();
+		//display(cout);
 	} else {
 		childNum++;
 		copyConstructor(childNum);
@@ -316,7 +319,7 @@ void bTREE::display(std::ostream& outfile){
 		outfile << "-" << endl;
 	} else {
 		displayLeft(outfile, tree_->left_, "    ");
-		outfile << "-------" << tree_->data_ << " " << tree_->time_ << endl;
+		outfile << "---" << tree_->data_ << " " << tree_->time_ << endl;
 		displayRight(outfile, tree_->right_, "    ");
 	}
 	//return outfile;
@@ -332,7 +335,7 @@ void bTREE::displayLeft( std::ostream & outfile,
    else
    {
       displayLeft( outfile, subtree->left_, prefix + "     " );
-      outfile << prefix + "/------" << subtree->data_ << " " << subtree->time_ 
+      outfile << prefix + "/---" << subtree->data_ << " " << subtree->time_ 
       << std::endl;
       displayRight( outfile, subtree->right_, prefix + "|    " );
    }
@@ -348,7 +351,7 @@ void bTREE::displayRight( std::ostream & outfile,
    else
    {
       displayLeft( outfile, subtree->left_, prefix + "|    " );
-      outfile << prefix + "\\------" << subtree->data_ << " " << subtree->time_ 
+      outfile << prefix + "\\---" << subtree->data_ << " " << subtree->time_ 
       << std::endl;
       displayRight( outfile, subtree->right_, prefix + "     " );
    }

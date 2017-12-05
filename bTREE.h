@@ -50,7 +50,7 @@ public:
     
     
     string dataInserted();
-    void fromArray(vector<string> list);
+    void fromList(vector<string> list);
     void hashRents(int selHash);
     bool hashRents(treeNode *& subtree, int selHash);
     void childInsert(string data, int time);
