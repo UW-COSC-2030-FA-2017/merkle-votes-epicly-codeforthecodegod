@@ -1,10 +1,12 @@
 #include "bTREE.cpp"
 #include <iostream>
 #include <vector>
+#include <list>
 using namespace std;
 int main(){
 	bTREE pseudo;
 	//cout << test.dataInserted();
+	
 	// cout << "Adding one... " << endl;
 	// bTREE pseudo;
 	// for(int i = 1; i < 10; i++){
@@ -15,9 +17,13 @@ int main(){
 	// pseudo.display(cout);
 	// pseudo.hashRents();
 	// pseudo.display(cout);
-	vector<string> list{"a","b","c","d","e","f"};
-	pseudo.fromArray(list);
+	vector<string> alist{"a","b","c","d","e","f"};
+	pseudo.fromArray(alist);
 	pseudo.display(cout);
+	list<string> myList;
+	myList.splice(myList.end(), pseudo.toList());
+	for (auto v : myList)
+        std::cout << v << "\n";
 	
 	// test.insert("stuff", 1);
 	// //test.print();

@@ -580,3 +580,34 @@ void bTREE::displayRight( std::ostream & outfile,
       displayRight( outfile, subtree->right_, prefix + "     " );
    }
 }
+
+list<string> bTREE::toList(){
+	return toList(tree_);
+}
+
+list<string> bTREE::toList(treeNode *& subtree){
+	list<string> temp;
+	list<string> tempL;
+	list<string> tempR;
+	temp.push_back(subtree->data_ + "\t" +to_string(subtree->time_));
+	if(subtree->left_ != NULL){
+		if(subtree->right_ != NULL){
+			tempL = toList(subtree->left_);
+			tempR = toList(subtree->right_);
+			tempL.splice(tempL.end(), tempR);
+			temp.splice(temp.end(), tempL);
+			return temp;
+		} else{ 
+			tempL = toList(subtree->left_);
+			temp.splice(temp.end(), tempL);
+			return temp;
+		}
+	} else if(subtree->right_ != NULL){
+		tempR = toList(subtree->right_);
+		temp.splice(temp.end(), tempR);
+		return temp;
+	} else {
+		return temp;
+	}
+	
+}

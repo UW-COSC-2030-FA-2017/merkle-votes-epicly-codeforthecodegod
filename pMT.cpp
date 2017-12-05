@@ -217,69 +217,69 @@ string pMT::hash_3(string key)//PJWHash lab9
 
 
 
-// bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
-// /**
-// * @brief Comparison between two merkle trees
-// * @param lhs, the left hand side of the equality statment
-// * @param rhs, the right hand side of the equality statement
-// * @return true if equal, false otherwise
-// */
-// {
-// 	if(lhs.myMerkle->data == rhs.myMerkle->data && lhs.myMerkle->time == rhs.myMerkle->time)
-// 	{
-// 		return true;
-// 	}
-// 	else 
-// 	{
-// 		return false;
-// 	}
-// }
+bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
+/**
+* @brief Comparison between two merkle trees
+* @param lhs, the left hand side of the equality statment
+* @param rhs, the right hand side of the equality statement
+* @return true if equal, false otherwise
+*/
+{
+	if(lhs.myMerkle.toList() == rhs.myMerkle.toList())
+	{
+		return true;
+	}
+	else 
+	{
+		return false;
+	}
+}
 
-// bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
-// /**
-// * @brief Comparison between two merkle trees
-// * @param lhs, the left hand side of the equality statment
-// * @param rhs, the right hand side of the equality statement
-// * @return true if not equal, false otherwise
-// */
-// {
+ bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
+ /**
+ * @brief Comparison between two merkle trees
+ * @param lhs, the left hand side of the equality statment
+ * @param rhs, the right hand side of the equality statement
+ * @return true if not equal, false otherwise
+ */
+ {
 
-// if(lhs.myMerkle->data != rhs.myMerkle->data && lhs.myMerkle->time != rhs.myMerkle->time)
-// {
-// 	return true;  
-// }
-// else
-// {
-// 	return false;
-// }
+ if(lhs.myMerkle.toList() != rhs.myMerkle.toList())
+ {
+ 	return true;  
+ }
+ else
+ {
+ 	return false;
+ }
 
-// friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
+friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
 
-// /*
-//  * @brief XOR between two merkle trees
-//  * @param lhs, the left hand side of the equality statment
-//  * @param rhs, the right hand side of the equality statement
-//  * @return true if not equal, false otherwise
-//  */
-// {
-// 	bTREE diftree = new bTREE;
-//  	for(int i = 0; i < lhs.length; i++)
-//  	{
-//  		for(int j = 0; j < rhs.length;j++)
-//  		{
-// 	 		if (lhs.i == rhs.j)
-// 	 		{
-// 	 			delete lhs.i;
-// 	 			delete rhs.j;
-// 	 		}
-// 	 	}
-//  	}
-//  	for(int r = 0; j < rhs.length;r++ )
-//  	{
-//  		lhs.insert(rhs.r);
-//  	}
-//  	return lhs;
-// }
+/*
+ * @brief XOR between two merkle trees
+ * @param lhs, the left hand side of the equality statment
+ * @param rhs, the right hand side of the equality statement
+ * @return true if not equal, false otherwise
+ */
+{
+	bTREE diftree = new bTREE;
+ 	for(int i = 0; i < lhs.length; i++)
+ 	{
+ 		for(int j = 0; j < rhs.length;j++)
+ 		{
+	 		if (lhs.i == rhs.j)
+	 		{
+	 			delete lhs.i;
+	 			delete rhs.j;
+	 		}
+	 	}
+ 	}
+ 	for(int r = 0; j < rhs.length;r++ )
+ 	{
+ 		lhs.insert(rhs.r);
+ 	}
+ 	return lhs;
+}
 
 //its fine XD
 // friend std::ostream& pMT::operator <<(std::ostream& out, const pMT& p)
@@ -334,15 +334,15 @@ string pMT::hash_3(string key)//PJWHash lab9
 //  	return rhs;
 // }
 
-// std::ostream& pMT::display(std::ostream& out){
-// 	myMerkle.display(out);
-// 	return out;
-// }
+std::ostream& pMT::display(std::ostream& out){
+	myMerkle.display(out);
+	return out;
+}
 
 
-// std::ostream& operator<<(std::ostream& out, pMT& p){
-//  	return p.display(out);
-// }
+std::ostream& operator<<(std::ostream& out, pMT& p){
+ 	return p.display(out);
+}
 
 
 // void pMT::display(std::ostream& outfile) const {

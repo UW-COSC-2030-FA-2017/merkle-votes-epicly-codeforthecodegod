@@ -77,6 +77,8 @@ public:
     void pseudoBuild(int v);
     void pseudoInsert(string, int, int);
     void pseudoInsert(treeNode * &subtree, string data, int time, int size, bool swch);
+    list<string> toList();
+    list<string> toList(treeNode *& subtree);
     // void print();
 
     // void printList(treeNode * node);
