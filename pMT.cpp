@@ -19,6 +19,10 @@ pMT::~pMT()
 {
 }
 
+string pMT::getRoot(){
+	return myMerkle.getRoot();
+}
+
 void pMT::fromArray(vector<string> childList){
 	int size = childList.size();
 	myMerkle.copyBuilder(size);
@@ -28,11 +32,20 @@ void pMT::fromArray(vector<string> childList){
 		string data;
 		int time;
 		is >> data >> time;
-		cout << data;
+		//cout << data;
 		insert(data, time);
 	}
+	myMerkle.hashRents(selectedHash);
+	cout << "--------------------------" << endl;
+	cout << "Array: " << endl;
+	cout << "--------------------------" << endl;
+	for (auto v : childList)
+        std::cout << v << "\n";
+   cout << "--------------------------" << endl;
 	myMerkle.display(cout);
+	cout << "--------------------------" << endl <<endl;;
 }
+
 
 int pMT::insert(string vote, int time)
 /**
@@ -43,18 +56,19 @@ int pMT::insert(string vote, int time)
  */
 {
 	//time = time(0);
-	if(selectedHash == 1)
-	{
-		myMerkle.childInsert(hash_1(vote),time);
-	}
-	else if (selectedHash == 2)
-	{
-		myMerkle.childInsert(hash_2(vote),time);
-	}
-	else if(selectedHash == 3)
-	{
-		myMerkle.childInsert(hash_3(vote),time);
-	}
+	// if(selectedHash == 1)
+	// {
+	// 	myMerkle.childInsert(hash_1(vote),time);
+	// }
+	// else if (selectedHash == 2)
+	// {
+	// 	myMerkle.childInsert(hash_2(vote),time);
+	// }
+	// else if(selectedHash == 3)
+	// {
+	// 	myMerkle.childInsert(hash_3(vote),time);
+	// }
+	myMerkle.childInsert(vote,time);
 	return 1;
 }
 
@@ -86,6 +100,10 @@ int pMT::find(string vote, int time, int selectedHash)
 	} else {
 		return operations;
 	}
+}
+
+list<string> pMT::toList(){
+	return myMerkle.toList();
 }
 
 int pMT::findHash(string mhash)
@@ -211,173 +229,105 @@ string pMT::hash_3(string key)//PJWHash lab9
       }
    }
    return to_string(hash);
+};
+
+
+
+bool operator ==(pMT& lhs, pMT& rhs)
+/**
+* @brief Comparison between two merkle trees
+* @param lhs, the left hand side of the equality statment
+* @param rhs, the right hand side of the equality statement
+* @return true if equal, false otherwise
+*/
+{
+	list<string> left;
+	list<string> right;
+	left.splice(left.end(), lhs.toList());
+	right.splice(left.end(), rhs.toList());
+	return (left == right);
 }
 
-// bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
-// /**
-// * @brief Comparison between two merkle trees
-// * @param lhs, the left hand side of the equality statment
-// * @param rhs, the right hand side of the equality statement
-// * @return true if equal, false otherwise
-// */
-// {
-// 	if(lhs.myMerkle->data == rhs.myMerkle->data && lhs.myMerkle->time == rhs.myMerkle->time)
-// 	{
-// 		return true;
-// 	}
-// 	else 
-// 	{
-// 		return false;
-// 	}
-// }
+ bool operator !=(pMT& lhs, pMT& rhs)
+ /**
+ * @brief Comparison between two merkle trees
+ * @param lhs, the left hand side of the equality statment
+ * @param rhs, the right hand side of the equality statement
+ * @return true if not equal, false otherwise
+ */
+ {
+ 	list<string> left;
+	list<string> right;
+	left.splice(left.end(), lhs.myMerkle.toList());
+	right.splice(left.end(), rhs.myMerkle.toList());
+	return (left != right);
+}
+pMT operator ^=(pMT& lhs, pMT& rhs)
 
-// bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
-// /**
-// * @brief Comparison between two merkle trees
-// * @param lhs, the left hand side of the equality statment
-// * @param rhs, the right hand side of the equality statement
-// * @return true if not equal, false otherwise
-// */
-// {
-
-// if(lhs.myMerkle->data != rhs.myMerkle->data && lhs.myMerkle->time != rhs.myMerkle->time)
-// {
-// 	return true;  
-// }
-// else
-// {
-// 	return false;
-// }
-
-// friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
-
-// /*
-//  * @brief XOR between two merkle trees
-//  * @param lhs, the left hand side of the equality statment
-//  * @param rhs, the right hand side of the equality statement
-//  * @return true if not equal, false otherwise
-//  */
-// {
-// 	bTREE diftree = new bTREE;
-//  	for(int i = 0; i < lhs.length; i++)
-//  	{
-//  		for(int j = 0; j < rhs.length;j++)
-//  		{
-// 	 		if (lhs.i == rhs.j)
-// 	 		{
-// 	 			delete lhs.i;
-// 	 			delete rhs.j;
-// 	 		}
-// 	 	}
-//  	}
-//  	for(int r = 0; j < rhs.length;r++ )
-//  	{
-//  		lhs.insert(rhs.r);
-//  	}
-//  	return lhs;
-// }
-
-//its fine XD
-// friend std::ostream& pMT::operator <<(std::ostream& out, const pMT& p)
-// *
-//  * @brief Print out a tree
-//  * @param out
-//  * @param p
-//  * @return a tree to the screen
- 
-// {
-
-// }
-
-// std::string prefix;
-//    if( tree_ == NULL )
-//    {
-//       out << "-" << std::endl;
-//    }
-//    else
-//    {
-//       displayLeft( out, tree_->left_, "    " );
-//       outfile << "---" << tree_->entry_ << std::endl;
-//       displayRight( out, tree_->right_, "    " );
-//    }
-// }
+/*
+ * @brief XOR between two merkle trees
+ * @param lhs, the left hand side of the equality statment
+ * @param rhs, the right hand side of the equality statement
+ * @return true if not equal, false otherwise
+ */
+{
+ 	list<string> left;
+ 	list<string> right;
+ 	list<string> xr;
+ 	list<string> xr2;
+ 	left.splice(left.end(), lhs.toList());
+ 	right.splice(right.end(), rhs.toList());
+	std::set_difference(left.begin(), left.end(), right.begin(), right.end(), std::inserter(xr, xr.begin()));
+	std::set_difference(right.begin(), right.end(), left.begin(), left.end(), std::inserter(xr2, xr2.begin()));
+	
+	
+	pMT temp(1);
+	xr.splice(xr.end(),xr2);
+	cout << "Unique HASHES: " << endl;
+	for (auto v : xr)
+     std::cout << v << "\n";
+   std::vector<string> tempVect{ std::begin(xr), std::end(xr) };
+   temp.fromArray(tempVect);
+	return temp;
+}
 
 
-// friend pMT pMT::operator ^(const pMT& lhs, const pMT& rhs)
 
-//  * @brief Where do two trees differ
-//  * @param lhs
-//  * @param rhs
-//  * @return a tree comprised of the right hand side tree nodes that are different from the left
- 
-// {
-//  	bTREE diftree = new bTREE;
-//  	for(int i = 0; i < lhs.length; i++)
-//  	{
-//  		for(int j = 0; j < rhs.length;j++)
-//  		{
-// 	 		if (lhs.i != rhs.j)
-// 	 		{
-// 	 			delete lhs.i;
-// 	 			delete rhs.j;
-// 	 		}
-// 	 	}
-//  	}
-//  	for(int r = 0; j < rhs.length;r++ )
-//  	{
-//  		rhs.insert(lhs.r);
-//  	}
-//  	return rhs;
-// }
+pMT operator ^( pMT& lhs, pMT& rhs)
 
-// std::ostream& pMT::display(std::ostream& out){
-// 	myMerkle.display(out);
-// 	return out;
-// }
+/* @brief Where do two trees differ
+ * @param lhs
+ * @param rhs
+ * @return a tree comprised of the right hand side tree nodes that are different from the left
+ */
+{
+ 	list<string> left;
+ 	list<string> right;
+ 	list<string> xr;
+ 	list<string> xr2;
+ 	left.splice(left.end(), lhs.toList());
+ 	right.splice(right.end(), rhs.toList());
+	std::set_difference(left.begin(), left.end(), right.begin(), right.end(), std::inserter(xr, xr.begin()));
+	std::set_difference(right.begin(), right.end(), left.begin(), left.end(), std::inserter(xr2, xr2.begin()));
+	
+	
+	pMT temp(1);
+	xr.splice(xr.end(),xr2);
+	cout << "Unique HASHES: " << endl;
+	for (auto v : xr)
+     std::cout << v << "\n";
+   std::vector<string> tempVect{ std::begin(xr), std::end(xr) };
+   temp.fromArray(tempVect);
+	return temp;
+}
 
-
-// std::ostream& operator<<(std::ostream& out, pMT& p){
-//  	return p.display(out);
-// }
+std::ostream& pMT::display(std::ostream& out){
+	myMerkle.display(out);
+	return out;
+}
 
 
-// void pMT::display(std::ostream& outfile) const {
-// 	string prefix;
-// 	if( p.myMerkle. == NULL){
-// 		outfile << "-" << endl;
-// 	} else {
-// 		displayLeft(outfile, p.myMerkle)
-// 	}
-// }
+std::ostream& operator<<(std::ostream& out, pMT& p){
+ 	return p.display(out);
+}
 
-// void 
-//    pMT:: displayLeft( std::ostream & outfile, 
-//    bTREE * subtree, std::string prefix )
-// {
-//    if( subtree == NULL )
-//    {
-//       outfile << prefix + "/" << std::endl;
-//    }
-//    else
-//    {
-//       displayLeft( outfile, subtree->left_, prefix + "     " );
-//       outfile << prefix + "/---" << subtree->entry_ << std::endl;
-//       displayRight( outfile, subtree->right_, prefix + "|    " );
-//    }
-// }
-
-// void 
-//    pMT:: displayRight( std::ostream & outfile, 
-//    bTREE * subtree, std::string prefix )
-// {
-//    if( subtree == NULL )
-//    {
-//       outfile << prefix + "\\" << std::endl;
-//    }
-//    else
-//    {
-//       displayLeft( outfile, subtree->left_, prefix + "|    " );
-//       outfile << prefix + "\\---" << subtree->entry_ << std::endl;
-//       displayRight( outfile, subtree->right_, prefix + "     " );
-//    }
-// }

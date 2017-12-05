@@ -3,7 +3,7 @@
 #include <math.h>
 using namespace std;
 
-int timesCalc(int times){
+inline int timesCalc(int times){
 		if(times > 1){
 			int it = (times - 9)/2 - 1;
 			return it - timesCalc(it);
@@ -12,7 +12,7 @@ int timesCalc(int times){
 		}
 	}
 
-int parentNumCalc(int childNum){
+inline int parentNumCalc(int childNum){
     int pNum;
     if(childNum > 1){
         pNum = childNum / 2 + childNum % 2;
@@ -21,10 +21,10 @@ int parentNumCalc(int childNum){
     return 0;
 }
 
-int treeSizeCalc(int childNum){
+inline int treeSizeCalc(int childNum){
     return childNum + parentNumCalc(childNum);
 }
 
-int treeHeight(int nodeNum){
+inline int treeHeight(int nodeNum){
     return log2(nodeNum);
 }

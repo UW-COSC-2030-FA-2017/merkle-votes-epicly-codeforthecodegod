@@ -1,14 +1,17 @@
-#pragma once
+#ifndef BTREE_H_
+#define BTREE_H_
+
 #include <string>
 #include "time.h"
 #include <iostream>
 #include <list>
 #include <vector>
+#include "hashFuncs.h"
 using namespace std;
 
 class bTREE
 {
-    
+    public:
     class treeNode{
     public:
         string data_;
@@ -45,13 +48,13 @@ public:
     bTREE();
     ~bTREE();
     
+    
     string dataInserted();
     void fromArray(vector<string> list);
-    void hashRents();
-    bool hashRents(treeNode *& subtree);
+    void hashRents(int selHash);
+    bool hashRents(treeNode *& subtree, int selHash);
     void childInsert(string data, int time);
     bool childInsert(treeNode *& subtree, string data, int time);
-    void baseCopy();
     void spinsterPrune();
     bool spinsterPrune(treeNode *& subtree);
     void copyConstructor(int);
@@ -62,40 +65,25 @@ public:
     bool childAdd(int num);
     bool childAdd(treeNode *& subtree, int num);
     void copyBuilder(int);
-    int createBST(int);
-    int createBST(treeNode * &subtree, int start, int end);
-    void BSTconstruct(int);
-    int insert(string, int, bool);
-    // returns timestamp if found
+    string getRoot();
     int find(string key);
-    // returns the sequence to get to the data
     string locate(string key);
     void display(std::ostream& outfile);
-    void pseudoBuild(int v);
-    void pseudoInsert(string, int, int);
-    void pseudoInsert(treeNode * &subtree, string data, int time, int size, bool swch);
-    // void print();
-
-    // void printList(treeNode * node);
+    list<string> toList();
+    list<string> toList(treeNode *& subtree);
     
-    
-    // friend bool operator==(const bTREE& lhs, const bTREE& rhs);
-    // friend bool operator!=(const bTREE& lhs, const bTREE& rhs);
-
-    // friend std::ostream& operator<<(std::ostream& out, const bTREE& p);
 
 private:
     string dataInserted(const treeNode * subtree);
     int numberOfNodes( const treeNode * subtree);
-    int insert(treeNode *& subtree, string data, int time, bool leaf);
     void destroy(treeNode * & subtree);
     int find(treeNode * subtree, string key);
     string locate(treeNode * subtree, string key);
     static void displayLeft(std::ostream & outfile, treeNode * subtree, string prefix);
     static void displayRight(std::ostream & outfile, treeNode * subtree, string prefix);
-    //int find(const treeNode * subtree, string key);
-    //string locate(const treeNode * subtree, string);
+    
 
     
 };
 
+#endif
