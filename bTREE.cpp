@@ -38,7 +38,7 @@ void bTREE::fromArray(vector<string> list){
 	cout << "size: " << size << endl;
 	copyBuilder(size);
 	for(int i = 0; i < size; i++){
-		childInsert(list[i]);
+		childInsert(list[i], time(NULL));
 	}
 	hashRents();
 }
@@ -85,8 +85,8 @@ bool bTREE::childInsert(treeNode * & subtree, string data, int time){
 		
 	} else if(!subtree->isLeaf){
 		cout << "subtree: " << subtree->data_ << endl;
-		if(!childInsert(subtree->left_, data)){
-			return childInsert(subtree->right_, data);
+		if(!childInsert(subtree->left_, data, time)){
+			return childInsert(subtree->right_, data, time);
 		} else {
 			return true;
 		}

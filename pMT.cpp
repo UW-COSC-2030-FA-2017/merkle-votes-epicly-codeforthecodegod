@@ -28,8 +28,10 @@ void pMT::fromArray(vector<string> childList){
 		string data;
 		int time;
 		is >> data >> time;
+		cout << data;
 		insert(data, time);
 	}
+	myMerkle.display(cout);
 }
 
 int pMT::insert(string vote, int time)
