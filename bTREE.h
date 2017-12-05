@@ -54,7 +54,6 @@ public:
     bool hashRents(treeNode *& subtree, int selHash);
     void childInsert(string data, int time);
     bool childInsert(treeNode *& subtree, string data, int time);
-    //void baseCopy();
     void spinsterPrune();
     bool spinsterPrune(treeNode *& subtree);
     void copyConstructor(int);
@@ -65,34 +64,19 @@ public:
     bool childAdd(int num);
     bool childAdd(treeNode *& subtree, int num);
     void copyBuilder(int);
-    //int createBST(int);
-    //int createBST(treeNode * &subtree, int start, int end);
-    //void BSTconstruct(int);
-    int insert(string, int, bool);
-    // returns timestamp if found
+    //int insert(string, int, bool);
+    
     int find(string key);
-    // returns the sequence to get to the data
     string locate(string key);
     void display(std::ostream& outfile);
-    //void pseudoBuild(int v);
-    //void pseudoInsert(string, int, int);
-    //void pseudoInsert(treeNode * &subtree, string data, int time, int size, bool swch);
     list<string> toList();
     list<string> toList(treeNode *& subtree);
-    // void print();
-
-    // void printList(treeNode * node);
     
-    
-    // friend bool operator==(const bTREE& lhs, const bTREE& rhs);
-    // friend bool operator!=(const bTREE& lhs, const bTREE& rhs);
-
-    // friend std::ostream& operator<<(std::ostream& out, const bTREE& p);
 
 private:
     string dataInserted(const treeNode * subtree);
     int numberOfNodes( const treeNode * subtree);
-    int insert(treeNode *& subtree, string data, int time, bool leaf);
+    //int insert(treeNode *& subtree, string data, int time, bool leaf);
     void destroy(treeNode * & subtree);
     int find(treeNode * subtree, string key);
     string locate(treeNode * subtree, string key);

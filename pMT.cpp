@@ -32,10 +32,14 @@ void pMT::fromArray(vector<string> childList){
 		insert(data, time);
 	}
 	myMerkle.hashRents(selectedHash);
+	cout << "--------------------------" << endl;
 	cout << "Array: " << endl;
+	cout << "--------------------------" << endl;
 	for (auto v : childList)
         std::cout << v << "\n";
+   cout << "--------------------------" << endl;
 	myMerkle.display(cout);
+	cout << "--------------------------" << endl <<endl;;
 }
 
 
@@ -272,12 +276,13 @@ pMT operator ^=(pMT& lhs, pMT& rhs)
 	std::set_difference(left.begin(), left.end(), right.begin(), right.end(), std::inserter(xr, xr.begin()));
 	std::set_difference(right.begin(), right.end(), left.begin(), left.end(), std::inserter(xr2, xr2.begin()));
 	
-	std::vector<string> tempVect{ std::begin(xr), std::end(xr) };
+	
 	pMT temp(1);
 	xr.splice(xr.end(),xr2);
 	cout << "Unique HASHES: " << endl;
 	for (auto v : xr)
      std::cout << v << "\n";
+   std::vector<string> tempVect{ std::begin(xr), std::end(xr) };
    temp.fromArray(tempVect);
 	return temp;
 }
@@ -316,10 +321,10 @@ pMT operator ^( pMT& lhs, pMT& rhs)
  * @return a tree comprised of the right hand side tree nodes that are different from the left
  */
 {
- 		list<string> left;
+ 	list<string> left;
  	list<string> right;
  	list<string> xr;
- 	list<string> xr2;
+ 	//list<string> xr2;
  	left.splice(left.end(), lhs.toList());
  	right.splice(right.end(), rhs.toList());
 	std::set_difference(left.begin(), left.end(), right.begin(), right.end(), std::inserter(xr, xr.begin()));
