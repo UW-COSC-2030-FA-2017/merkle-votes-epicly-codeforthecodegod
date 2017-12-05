@@ -9,7 +9,7 @@ using namespace std;
 //look at descriptions in pMT.h for guidance on what you might need for these function to actually do
 bTREE::bTREE() : tree_(NULL)
 {
-	cout << tree_;
+	//cout << tree_;
 }
 
 bTREE::~bTREE() 
@@ -35,7 +35,7 @@ int bTREE::numberOfNodes(){
 
 void bTREE::fromArray(vector<string> list){
 	int size = list.size();
-	cout << "size: " << size << endl;
+	//cout << "size: " << size << endl;
 	copyBuilder(size);
 	for(int i = 0; i < size; i++){
 		childInsert(list[i], time(NULL));
@@ -54,46 +54,51 @@ void bTREE::childInsert(string data, int time = 1){
 	childInsert(tree_, data, time);
 }
 
-void bTREE::hashRents(int selHash = 1){
+void bTREE::hashRents(int selHash = 0){
 	hashRents(tree_, selHash);
 }
 
-bool bTREE::hashRents(treeNode *& subtree, int selHash = 1){
+bool bTREE::hashRents(treeNode *& subtree, int selHash = 0){
 	if(subtree == NULL){
 		return true;
 	} else if (subtree->isLeaf){
+		//cout << "Leaf hit!" << endl;
 		return true;
 	} else if(hashRents(subtree->left_, selHash) && hashRents(subtree->right_, selHash)) {
-		cout << "hashing" << endl;
+	//	cout << "hashing" << endl;
+		//cout << "hashing subtree: " << subtree->data_ << " leaf: " << subtree->isLeaf << endl;
 		subtree->time_ = time(NULL);
-		if(subtree->left_ != NULL && subtree->right_ != NULL){
-			subtree->data_ = hasher(subtree->left_->data_ + subtree->right_->data_, selHash);
-		} else if(subtree->left_ != NULL){
-			subtree->data_ = hasher(subtree->left_->data_, selHash);
-		} else {
-			subtree->data_ = hasher(subtree->right_->data_, selHash);
-		}
-		return true;
+		
+			if(subtree->left_ != NULL && subtree->right_ != NULL){
+				subtree->data_ = hasher(subtree->left_->data_ + subtree->right_->data_, selHash);
+			} else if(subtree->right_ != NULL){
+				subtree->data_ = hasher(subtree->right_->data_, selHash);
+			} else	{
+				subtree->data_ = hasher(subtree->left_->data_, selHash);
+				return true;
+			}
+		
 	}
 }
 
 bool bTREE::childInsert(treeNode * & subtree, string data, int time = 1){
 	//cout << "hey!" << endl;
 	if(subtree == NULL){
-		cout << "end of tree!" << endl;
+	//	cout << "end of tree!" << endl;
 		return false;
 		
 	} else if(!subtree->isLeaf){
-		cout << "subtree: " << subtree->data_ << endl;
+	//	cout << "subtree: " << subtree->data_ << endl;
 		if(!childInsert(subtree->left_, data, time)){
 			return childInsert(subtree->right_, data, time);
 		} else {
 			return true;
 		}
 	} else if(subtree->data_.at(0) == '#'){
-		cout << "child found!" << endl;
+	//	cout << "child found!" << endl;
 		subtree->time_ = time;
 		subtree->data_ = data;
+		subtree->isLeaf = true;
 		return true;
 	}
 }
@@ -119,10 +124,10 @@ void bTREE::spinsterPrune(){
 }
 
 bool bTREE::spinsterPrune(treeNode *& subtree){
-	cout << "Pruning the tree!" << endl;
+//	cout << "Pruning the tree!" << endl;
 	if(subtree->left_ != NULL){
 		if(!spinsterPrune(subtree->left_) && !spinsterPrune(subtree->right_)){
-			cout << "subtree " << subtree->data_ << " pruned!" << endl;
+		//	cout << "subtree " << subtree->data_ << " pruned!" << endl;
 			destroy(subtree->left_);
 			destroy(subtree->right_);
 			destroy(subtree);
@@ -139,7 +144,7 @@ bool bTREE::spinsterPrune(treeNode *& subtree){
 	// 		return true;
 	// 	}
 		if(!spinsterPrune(subtree->left_) && !spinsterPrune(subtree->right_)){
-			cout << "subtree " << subtree->data_ << " pruned!" << endl;
+		//	cout << "subtree " << subtree->data_ << " pruned!" << endl;
 			destroy(subtree->left_);
 			destroy(subtree->right_);
 			destroy(subtree);
@@ -283,22 +288,22 @@ bool bTREE::childAdd(int num){
 bool bTREE::childAdd(treeNode * &subtree, int num){
 	if(!subtree->isLeaf){
 		if(subtree->left_ == NULL && subtree->right_==NULL){
-			cout << subtree->data_ << " Adding to the left: ";
+	//		cout << subtree->data_ << " Adding to the left: ";
 			subtree->left_ = new treeNode("#child " + to_string(num), 1, true);
-			cout << "Success!" << endl;
+		//	cout << "Success!" << endl;
 			return true;
 			
 
 		} else if(subtree->right_ == NULL && subtree->left_->isLeaf){
-			cout << subtree->data_ << " Adding to the right: ";
+	//		cout << subtree->data_ << " Adding to the right: ";
 			subtree->right_ = new treeNode("#child " + to_string(num), 1, true);
-			cout << "Success!" << endl;
+		//	cout << "Success!" << endl;
 			return true;
 		}
 		else {
-			cout << subtree-> data_ << " has non-child nodes, searching left: " << endl;
+	//		cout << subtree-> data_ << " has non-child nodes, searching left: " << endl;
 			if(!childAdd(subtree->right_, num)){
-				cout << "failure, searching right..." << endl;
+		//		cout << "failure, searching right..." << endl;
 				return childAdd(subtree->left_, num);
 			} else {
 				return true;
@@ -384,106 +389,106 @@ int bTREE::insert(treeNode * &subtree, string data, int time, bool leaf){
 	// return 1;
 }
 
-void bTREE::pseudoBuild(int childNum){
-	int nodeNum = treeSizeCalc(childNum);
-	cout << nodeNum << endl;
-	// for(int i = 0; i < nodeNum; i++){
-	// 	if(i <= (nodeNum - childNum - 1)){
-	// 		pseudoInsert("parent", i, false, );
-	// 	} else {
-	// 		pseudoInsert("child", i, true);
-	// 	}
-	// }
-	pseudoInsert("node", 0, nodeNum);
+// void bTREE::pseudoBuild(int childNum){
+// 	int nodeNum = treeSizeCalc(childNum);
+// 	cout << nodeNum << endl;
+// 	// for(int i = 0; i < nodeNum; i++){
+// 	// 	if(i <= (nodeNum - childNum - 1)){
+// 	// 		pseudoInsert("parent", i, false, );
+// 	// 	} else {
+// 	// 		pseudoInsert("child", i, true);
+// 	// 	}
+// 	// }
+// 	pseudoInsert("node", 0, nodeNum);
 	
 	
-}
+// }
 
-void bTREE::pseudoInsert(string data, int time, int size){
-	pseudoInsert(tree_, data, time, size, 0);
-}
+// void bTREE::pseudoInsert(string data, int time, int size){
+// 	pseudoInsert(tree_, data, time, size, 0);
+// }
 
-void bTREE::pseudoInsert(treeNode * &subtree, string data, int time, int size, bool swch){
-	if(size == 0 )
-   {
-      subtree = NULL;
-   }
-   else if (size > 8){
-   	subtree = new treeNode(data, time);
-   	int leftSize = (((size - 1) / 7)/2)*7;
-   	int rightSize = size - 1 - leftSize;
-   	pseudoInsert(subtree->left_, data, size, leftSize, 0);
-      pseudoInsert(subtree->right_, data, size, rightSize, 0);
-   }
-   else if(swch){
-   	cout << "switch" << endl;
-   	cout << size << endl;
-   	subtree = new treeNode(data, time);
-   	size = size - 1;
-   	pseudoInsert(subtree->left_, data, time, size, 1);
-   }
-   else if(size == 1){
+// void bTREE::pseudoInsert(treeNode * &subtree, string data, int time, int size, bool swch){
+// 	if(size == 0 )
+//   {
+//       subtree = NULL;
+//   }
+//   else if (size > 8){
+//   	subtree = new treeNode(data, time);
+//   	int leftSize = (((size - 1) / 7)/2)*7;
+//   	int rightSize = size - 1 - leftSize;
+//   	pseudoInsert(subtree->left_, data, size, leftSize, 0);
+//       pseudoInsert(subtree->right_, data, size, rightSize, 0);
+//   }
+//   else if(swch){
+//   	cout << "switch" << endl;
+//   	cout << size << endl;
+//   	subtree = new treeNode(data, time);
+//   	size = size - 1;
+//   	pseudoInsert(subtree->left_, data, time, size, 1);
+//   }
+//   else if(size == 1){
    	
-   	cout << size << endl;
-   	size = 0;
-   	subtree = new treeNode(data, time);
-   	pseudoInsert(subtree->left_, data, time, size, 0);
+//   	cout << size << endl;
+//   	size = 0;
+//   	subtree = new treeNode(data, time);
+//   	pseudoInsert(subtree->left_, data, time, size, 0);
  
-   } else if(size == 3){
-   	cout << size << endl;
-   	size = 1;
-   	subtree = new treeNode(data, time);
-   	pseudoInsert(subtree->left_, data, time, size, 0);
-		pseudoInsert(subtree->right_, data, time, size, 0);
-   } else if(size < 6 && size %2 == 0){
-   	int leftSize = size - 1;
-   	subtree = new treeNode(data, time);
-   	pseudoInsert(subtree->left_, data, time, leftSize, 0);
-   	cout << "size: " << size << endl;
-      cout << "left size: " << leftSize << endl;
-      //cout << "right size: " << rightSize << endl; 
-   }
-   else
-   {
-      subtree = new treeNode(data, time);
-      int leftSize = size/3 + (size % 2);
-      cout <<leftSize << endl;
-      if(size % 7 != 0){
-      	leftSize = leftSize - size %2;
-      } else {
-      	if(size % 2 == 0){
-      		leftSize += 2;
-      	}
-      }
-      int rightSize = size - leftSize - 1;
-      if(leftSize == 3){
-      	if(rightSize <= 3){
-      		pseudoInsert(subtree->left_, data, leftSize, leftSize, 0);
-      		pseudoInsert(subtree->right_, data, rightSize, rightSize, 0);
-      	} else {
-      		pseudoInsert(subtree->left_, data, leftSize, leftSize, 1);
-      		pseudoInsert(subtree->right_, data, rightSize, rightSize, 0);
-      	}
-      } else {
-      	pseudoInsert(subtree->left_, data, time, leftSize, 0);
-      	pseudoInsert(subtree->right_, data, time, rightSize, 0);
-      }
-      cout << "size: " << size << endl;
-      cout << "left size: " << leftSize << endl;
-      cout << "right size: " << rightSize << endl; 
-     // if(size % 3 == 0){
-	    //  int leftSize = size - 3;
-	    //  pseudoInsert(subtree->left_, data, time, leftSize);
-	    //  int rightSize = size - 1 - leftSize;
-	    //  pseudoInsert(subtree->right_, data, time, rightSize );
-	    //}else{
-	    //	int leftSize = size - 1;
-	    //  pseudoInsert(subtree->left_, data, time, leftSize);
-	    //  int rightSize = size - 1 - leftSize;
-	    //  pseudoInsert(subtree->right_, data, time, rightSize );
-	    //}
-   } 
-}
+//   } else if(size == 3){
+//   	cout << size << endl;
+//   	size = 1;
+//   	subtree = new treeNode(data, time);
+//   	pseudoInsert(subtree->left_, data, time, size, 0);
+// 		pseudoInsert(subtree->right_, data, time, size, 0);
+//   } else if(size < 6 && size %2 == 0){
+//   	int leftSize = size - 1;
+//   	subtree = new treeNode(data, time);
+//   	pseudoInsert(subtree->left_, data, time, leftSize, 0);
+//   	cout << "size: " << size << endl;
+//       cout << "left size: " << leftSize << endl;
+//       cout << "right size: " << rightSize << endl; 
+//   }
+//   else
+//   {
+//       subtree = new treeNode(data, time);
+//       int leftSize = size/3 + (size % 2);
+//       cout <<leftSize << endl;
+//       if(size % 7 != 0){
+//       	leftSize = leftSize - size %2;
+//       } else {
+//       	if(size % 2 == 0){
+//       		leftSize += 2;
+//       	}
+//       }
+//       int rightSize = size - leftSize - 1;
+//       if(leftSize == 3){
+//       	if(rightSize <= 3){
+//       		pseudoInsert(subtree->left_, data, leftSize, leftSize, 0);
+//       		pseudoInsert(subtree->right_, data, rightSize, rightSize, 0);
+//       	} else {
+//       		pseudoInsert(subtree->left_, data, leftSize, leftSize, 1);
+//       		pseudoInsert(subtree->right_, data, rightSize, rightSize, 0);
+//       	}
+//       } else {
+//       	pseudoInsert(subtree->left_, data, time, leftSize, 0);
+//       	pseudoInsert(subtree->right_, data, time, rightSize, 0);
+//       }
+//       cout << "size: " << size << endl;
+//       cout << "left size: " << leftSize << endl;
+//       cout << "right size: " << rightSize << endl; 
+//      // if(size % 3 == 0){
+// 	    //  int leftSize = size - 3;
+// 	    //  pseudoInsert(subtree->left_, data, time, leftSize);
+// 	    //  int rightSize = size - 1 - leftSize;
+// 	    //  pseudoInsert(subtree->right_, data, time, rightSize );
+// 	    //}else{
+// 	    //	int leftSize = size - 1;
+// 	    //  pseudoInsert(subtree->left_, data, time, leftSize);
+// 	    //  int rightSize = size - 1 - leftSize;
+// 	    //  pseudoInsert(subtree->right_, data, time, rightSize );
+// 	    //}
+//   } 
+// }
 
 void bTREE::destroy(treeNode * & subtree){
 	if(subtree != NULL){
@@ -491,7 +496,7 @@ void bTREE::destroy(treeNode * & subtree){
 		destroy( subtree->right_);
 		delete subtree;
 		subtree = NULL;
-		cout << "Tree Destroyed!!" << endl;
+		//cout << "Tree Destroyed!!" << endl;
 	}
 
 }

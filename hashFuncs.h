@@ -6,7 +6,7 @@
 #include <stdlib.h>
 using namespace std;
 
-inline string hash1(string key){
+string hash1(string key){
    unsigned int b    = 378551;
    unsigned int a    = 63689;
    unsigned int hash = 0;
@@ -19,7 +19,7 @@ inline string hash1(string key){
        return to_string(hash);
 }
 
-inline string hash2(string key){
+string hash2(string key){
     unsigned int hash = 1315423911;
 
     for(std::size_t i = 0; i < key.length(); i++)
@@ -30,7 +30,7 @@ inline string hash2(string key){
     return to_string(hash);
 }
 
-inline string hash3(string key){
+string hash3(string key){
     unsigned int BitsInUnsignedInt = (unsigned int)(sizeof(unsigned int) * 8);
     unsigned int ThreeQuarters     = (unsigned int)((BitsInUnsignedInt  * 3) / 4);
     unsigned int OneEighth         = (unsigned int)(BitsInUnsignedInt / 8);
@@ -50,13 +50,15 @@ inline string hash3(string key){
     return to_string(hash);
 }
 
-inline string hasher(string data, int selHash){
+string hasher(string data, int selHash){
     if(selHash == 1){
         return hash1(data);
     } else if (selHash == 2){
         return hash2(data);
-    } else {
+    } else if (selHash == 3){
         return hash3(data);
+    } else {
+        return data;
     }
 }
 

@@ -28,10 +28,13 @@ void pMT::fromArray(vector<string> childList){
 		string data;
 		int time;
 		is >> data >> time;
-		cout << data;
+		//cout << data;
 		insert(data, time);
 	}
 	myMerkle.hashRents(selectedHash);
+	cout << "Array: " << endl;
+	for (auto v : childList)
+        std::cout << v << "\n";
 	myMerkle.display(cout);
 }
 
@@ -45,18 +48,19 @@ int pMT::insert(string vote, int time)
  */
 {
 	//time = time(0);
-	if(selectedHash == 1)
-	{
-		myMerkle.childInsert(hash_1(vote),time);
-	}
-	else if (selectedHash == 2)
-	{
-		myMerkle.childInsert(hash_2(vote),time);
-	}
-	else if(selectedHash == 3)
-	{
-		myMerkle.childInsert(hash_3(vote),time);
-	}
+	// if(selectedHash == 1)
+	// {
+	// 	myMerkle.childInsert(hash_1(vote),time);
+	// }
+	// else if (selectedHash == 2)
+	// {
+	// 	myMerkle.childInsert(hash_2(vote),time);
+	// }
+	// else if(selectedHash == 3)
+	// {
+	// 	myMerkle.childInsert(hash_3(vote),time);
+	// }
+	myMerkle.childInsert(vote,time);
 	return 1;
 }
 
@@ -88,6 +92,10 @@ int pMT::find(string vote, int time, int selectedHash)
 	} else {
 		return operations;
 	}
+}
+
+list<string> pMT::toList(){
+	return myMerkle.toList();
 }
 
 int pMT::findHash(string mhash)
@@ -217,7 +225,7 @@ string pMT::hash_3(string key)//PJWHash lab9
 
 
 
-bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
+bool operator ==(pMT& lhs, pMT& rhs)
 /**
 * @brief Comparison between two merkle trees
 * @param lhs, the left hand side of the equality statment
@@ -225,17 +233,14 @@ bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
 * @return true if equal, false otherwise
 */
 {
-	if(lhs.myMerkle.toList() == rhs.myMerkle.toList())
-	{
-		return true;
-	}
-	else 
-	{
-		return false;
-	}
+	list<string> left;
+	list<string> right;
+	left.splice(left.end(), lhs.toList());
+	right.splice(left.end(), rhs.toList());
+	return (left == right);
 }
 
- bool pMT::operator !=(const pMT& lhs, const pMT& rhs)
+ bool operator !=(pMT& lhs, pMT& rhs)
  /**
  * @brief Comparison between two merkle trees
  * @param lhs, the left hand side of the equality statment
@@ -243,17 +248,13 @@ bool pMT::operator ==(const pMT& lhs, const pMT& rhs)
  * @return true if not equal, false otherwise
  */
  {
-
- if(lhs.myMerkle.toList() != rhs.myMerkle.toList())
- {
- 	return true;  
- }
- else
- {
- 	return false;
- }
-
-friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
+ 	list<string> left;
+	list<string> right;
+	left.splice(left.end(), lhs.myMerkle.toList());
+	right.splice(left.end(), rhs.myMerkle.toList());
+	return (left != right);
+}
+pMT operator ^=(pMT& lhs, pMT& rhs)
 
 /*
  * @brief XOR between two merkle trees
@@ -262,23 +263,23 @@ friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
  * @return true if not equal, false otherwise
  */
 {
-	bTREE diftree = new bTREE;
- 	for(int i = 0; i < lhs.length; i++)
- 	{
- 		for(int j = 0; j < rhs.length;j++)
- 		{
-	 		if (lhs.i == rhs.j)
-	 		{
-	 			delete lhs.i;
-	 			delete rhs.j;
-	 		}
-	 	}
- 	}
- 	for(int r = 0; j < rhs.length;r++ )
- 	{
- 		lhs.insert(rhs.r);
- 	}
- 	return lhs;
+ 	list<string> left;
+ 	list<string> right;
+ 	list<string> xr;
+ 	list<string> xr2;
+ 	left.splice(left.end(), lhs.toList());
+ 	right.splice(right.end(), rhs.toList());
+	std::set_difference(left.begin(), left.end(), right.begin(), right.end(), std::inserter(xr, xr.begin()));
+	std::set_difference(right.begin(), right.end(), left.begin(), left.end(), std::inserter(xr2, xr2.begin()));
+	
+	std::vector<string> tempVect{ std::begin(xr), std::end(xr) };
+	pMT temp(1);
+	xr.splice(xr.end(),xr2);
+	cout << "Unique HASHES: " << endl;
+	for (auto v : xr)
+     std::cout << v << "\n";
+   temp.fromArray(tempVect);
+	return temp;
 }
 
 //its fine XD
@@ -307,32 +308,31 @@ friend pMT pMT::operator ^=(const pMT& lhs, const pMT& rhs)
 // }
 
 
-// friend pMT pMT::operator ^(const pMT& lhs, const pMT& rhs)
+pMT operator ^( pMT& lhs, pMT& rhs)
 
-//  * @brief Where do two trees differ
-//  * @param lhs
-//  * @param rhs
-//  * @return a tree comprised of the right hand side tree nodes that are different from the left
- 
-// {
-//  	bTREE diftree = new bTREE;
-//  	for(int i = 0; i < lhs.length; i++)
-//  	{
-//  		for(int j = 0; j < rhs.length;j++)
-//  		{
-// 	 		if (lhs.i != rhs.j)
-// 	 		{
-// 	 			delete lhs.i;
-// 	 			delete rhs.j;
-// 	 		}
-// 	 	}
-//  	}
-//  	for(int r = 0; j < rhs.length;r++ )
-//  	{
-//  		rhs.insert(lhs.r);
-//  	}
-//  	return rhs;
-// }
+/* @brief Where do two trees differ
+ * @param lhs
+ * @param rhs
+ * @return a tree comprised of the right hand side tree nodes that are different from the left
+ */
+{
+ 		list<string> left;
+ 	list<string> right;
+ 	list<string> xr;
+ 	list<string> xr2;
+ 	left.splice(left.end(), lhs.toList());
+ 	right.splice(right.end(), rhs.toList());
+	std::set_difference(left.begin(), left.end(), right.begin(), right.end(), std::inserter(xr, xr.begin()));
+	std::vector<string> tempVect{ std::begin(xr), std::end(xr) };
+	pMT temp(1);
+	
+	cout << "Unique HASHES: " << endl;
+	for (auto v : xr)
+     std::cout << v << "\n";
+   cout << "hashing" << endl;
+   temp.fromArray(tempVect);
+	return temp;
+}
 
 std::ostream& pMT::display(std::ostream& out){
 	myMerkle.display(out);

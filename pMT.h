@@ -3,6 +3,9 @@
 
 #include "bTREE.h"
 #include <string>
+#include <algorithm>
+#include <vector>
+#include <iterator>
 using namespace std;
 class pMT
 {
@@ -26,16 +29,19 @@ public:
     int findHash(string);
     string locateData(string vote);
     string locateHash(string mhash);
+    list<string> toList();
     
-    // friend bool operator==(const pMT& lhs, const pMT& rhs); // = comparison 
+    friend bool operator==(pMT& lhs, pMT& rhs); // = comparison 
     
-    // friend bool operator!=(const pMT& lhs, const pMT& rhs);// not = comparison
+    friend bool operator!=( pMT& lhs, pMT& rhs);// not = comparison
 
-    // friend pMT operator^=(const pMT& lhs, const pMT& rhs); //
+    friend pMT operator^=( pMT& lhs, pMT& rhs); //
     
     // friend pMT operator^(const pMT& lhs, const pMT& rhs);
 
-    // friend std::ostream& operator<<(std::ostream& out, const pMT& p); //display function
+    friend std::ostream& operator<<(std::ostream& out, const pMT& p); //display function
+    
+    
 
 };
 
